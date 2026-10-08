@@ -76,7 +76,7 @@ section.s{padding:100px 0;position:relative;z-index:2}
 
 /* PROCESS */
 .process-grid{display:grid;gap:12px;margin-top:48px}
-@media(min-width:768px){.process-grid{grid-template-columns:repeat(3,1fr)}}
+@media(min-width:768px){.process-grid{grid-template-columns:repeat(4,1fr)}}
 .process-step{padding:32px 28px}
 .process-step .num{font-size:13px;color:var(--mint);font-weight:600}
 .process-step h3{font-size:22px;font-weight:700;margin:20px 0 10px}
@@ -101,9 +101,7 @@ section.s{padding:100px 0;position:relative;z-index:2}
 .service.featured{border-color:rgba(0,255,170,.35);background:linear-gradient(165deg,rgba(0,255,170,.06),rgba(16,17,17,.95) 60%);box-shadow:0 0 60px rgba(0,255,170,.08)}
 .service .tag{font-size:11px;font-weight:600;color:var(--mint);letter-spacing:.15em;text-transform:uppercase}
 .service h3{font-size:22px;font-weight:700;margin:20px 0 6px}
-.service .price-old{font-size:16px;color:var(--fg3);text-decoration:line-through;margin-top:8px}
-.service .price{font-size:28px;font-weight:800;color:var(--mint)}
-.service .discount-badge{display:inline-block;background:var(--mint);color:var(--bg);font-size:11px;font-weight:700;padding:3px 10px;border-radius:100px;margin-left:8px;vertical-align:middle}
+.service .price{font-size:28px;font-weight:800;color:var(--mint);margin-top:8px}
 .service p{font-size:14px;color:var(--fg2);line-height:1.55;margin-top:10px}
 .service ul{list-style:none;margin-top:16px;flex:1}
 .service ul li{font-size:13px;color:var(--fg2);padding:6px 0 6px 18px;position:relative}
@@ -124,12 +122,13 @@ section.s{padding:100px 0;position:relative;z-index:2}
 .case-stats strong{display:block;font-size:20px;font-weight:800;color:var(--mint);line-height:1.1}
 .case-stats span{font-size:10px;color:var(--fg3);line-height:1.3;display:block;margin-top:4px}
 
-/* METRICS */
-.metrics-grid{margin-top:48px;display:grid;gap:12px;grid-template-columns:repeat(2,1fr)}
-@media(min-width:768px){.metrics-grid{grid-template-columns:repeat(4,1fr)}}
-.metric{padding:32px 16px;text-align:center}
-.metric-num{display:block;font-size:clamp(2.4rem,6vw,3.6rem);font-weight:900;color:var(--mint);letter-spacing:-.04em;line-height:1}
-.metric-label{display:block;font-size:12px;color:var(--fg2);margin-top:8px;line-height:1.35}
+/* DELIVERABLES */
+.deliverables-grid{margin-top:48px;display:grid;gap:12px;grid-template-columns:repeat(2,1fr)}
+@media(min-width:768px){.deliverables-grid{grid-template-columns:repeat(3,1fr)}}
+.deliverable{padding:28px 24px}
+.deliverable .d-icon{font-size:24px;margin-bottom:12px;display:block}
+.deliverable h4{font-size:16px;font-weight:700;margin-bottom:6px}
+.deliverable p{font-size:13px;color:var(--fg2);line-height:1.5}
 
 /* ABOUT */
 .about-grid{display:grid;gap:48px;margin-top:48px;align-items:center}
@@ -146,6 +145,16 @@ section.s{padding:100px 0;position:relative;z-index:2}
 .review blockquote{font-size:17px;color:var(--fg);line-height:1.6;font-style:normal}
 .review .author{margin-top:20px;font-size:14px;font-weight:600}
 .review .role{font-size:13px;color:var(--fg3)}
+
+/* FAQ */
+.faq-list{margin-top:48px;display:flex;flex-direction:column;gap:8px}
+.faq-item{border-radius:var(--radius);overflow:hidden}
+.faq-q{width:100%;display:flex;justify-content:space-between;align-items:center;padding:20px 24px;background:none;border:none;font-family:inherit;font-size:16px;font-weight:600;color:var(--fg);cursor:pointer;text-align:left;gap:16px}
+.faq-q::after{content:'+';font-size:22px;color:var(--fg3);transition:transform .3s;flex-shrink:0}
+.faq-item.open .faq-q::after{transform:rotate(45deg);color:var(--mint)}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .35s ease}
+.faq-item.open .faq-a{max-height:300px}
+.faq-a p{padding:0 24px 20px;font-size:14px;color:var(--fg2);line-height:1.6}
 
 /* CONTACT */
 .contact-section{position:relative;z-index:2;padding-bottom:0}
@@ -184,8 +193,8 @@ footer a:hover{color:var(--fg)}
       <div class="links">
         <a href="#process">Процесс</a>
         <a href="#services">Услуги</a>
-        <a href="#cases">Кейсы</a>
-        <a href="#about">Обо мне</a>
+        <a href="#cases">Проекты</a>
+        <a href="#faq">FAQ</a>
       </div>
       <a href="https://t.me/valevskiy_studio" target="_blank" class="nav-cta">Обсудить проект</a>
     </div>
@@ -198,11 +207,11 @@ footer a:hover{color:var(--fg)}
     <canvas id="scene" aria-label="3D стеклянный куб"></canvas>
     <div class="hero-ui">
       <h1 class="hero-top">Изучаю рынок</h1>
-      <h1 class="hero-bottom">Создаю <em>решение</em></h1>
-      <p class="hero-sub">Сайты, Telegram-боты и Mini App на основе анализа конкурентов. Не просто красиво. Эффективно.</p>
+      <h1 class="hero-bottom">Создаю <em>digital-продукт</em></h1>
+      <p class="hero-sub">Сайты, Telegram-боты и Mini Apps для малого бизнеса на основе анализа конкурентов и поведения клиентов.</p>
       <div class="hero-cta">
         <a href="https://t.me/valevskiy_studio" target="_blank" class="btn-mint">Обсудить проект</a>
-        <a href="#cases" class="btn-ghost">Смотреть кейсы</a>
+        <a href="#cases" class="btn-ghost">Смотреть проекты</a>
       </div>
       <div class="hero-loader" id="loader">Loading</div>
     </div>
@@ -229,7 +238,12 @@ footer a:hover{color:var(--fg)}
         <div class="glass process-step reveal">
           <span class="num">03</span>
           <h3>Решение</h3>
-          <p>Проектирую и собираю продукт на основе данных. Подключаю аналитику для отслеживания результатов.</p>
+          <p>Проектирую и собираю продукт на основе данных. Каждый элемент решает задачу бизнеса.</p>
+        </div>
+        <div class="glass process-step reveal">
+          <span class="num">04</span>
+          <h3>Запуск и метрики</h3>
+          <p>Подключаю аналитику, ставлю цели и помогаю измерить первые результаты после старта.</p>
         </div>
       </div>
     </div>
@@ -267,8 +281,7 @@ footer a:hover{color:var(--fg)}
         <div class="glass service reveal">
           <span class="tag">Анализ</span>
           <h3>Экспресс-аудит</h3>
-          <div class="price-old">от 10 000 ₽</div>
-          <div><span class="price">от 5 000 ₽</span><span class="discount-badge">-50%</span></div>
+          <div><span class="price">от 5 000 ₽</span></div>
           <p>PDF с разбором 3-5 конкурентов и рекомендациями для вашего бизнеса.</p>
           <ul><li>Анализ сайтов конкурентов</li><li>Сильные и слабые стороны</li><li>Рекомендации по позиционированию</li><li>Срок: 2-3 дня</li></ul>
           <a href="https://t.me/valevskiy_studio" target="_blank" class="cta-link">Заказать аудит →</a>
@@ -276,9 +289,9 @@ footer a:hover{color:var(--fg)}
         <div class="glass service featured reveal">
           <span class="badge-pop">Популярное</span>
           <span class="tag">Разработка</span>
-          <h3>Сайт или Telegram-продукт</h3>
-          <div class="price-old">от 50 000 ₽</div>
-          <div><span class="price">от 30 000 ₽</span><span class="discount-badge">-40%</span></div>
+          <h3>Digital-продукт</h3>
+          <div class="price-sub" style="font-size:13px;color:var(--fg3);margin-top:2px">Сайт / Telegram-бот / Mini App</div>
+          <div><span class="price">от 30 000 ₽</span></div>
           <p>Полноценный digital-продукт: лендинг, сайт, бот или Mini App.</p>
           <ul><li>Аудит конкурентов</li><li>Прототип → дизайн → разработка</li><li>Адаптив под все устройства</li><li>Яндекс.Метрика</li><li>Срок: 7-21 день</li></ul>
           <a href="https://t.me/valevskiy_studio" target="_blank" class="cta-link">Обсудить проект →</a>
@@ -286,8 +299,7 @@ footer a:hover{color:var(--fg)}
         <div class="glass service reveal">
           <span class="tag">Система</span>
           <h3>Полный пакет</h3>
-          <div class="price-old">от 120 000 ₽</div>
-          <div><span class="price">от 80 000 ₽</span><span class="discount-badge">-33%</span></div>
+          <div><span class="price">от 80 000 ₽</span></div>
           <p>Аудит + сайт + Telegram-бот + аналитика + стратегия продвижения.</p>
           <ul><li>Всё из пакета «Разработка»</li><li>Telegram-бот для заявок</li><li>Стратегия продвижения</li><li>Сопровождение</li></ul>
           <a href="https://t.me/valevskiy_studio" target="_blank" class="cta-link">Обсудить пакет →</a>
@@ -300,7 +312,7 @@ footer a:hover{color:var(--fg)}
   <section class="s" id="cases">
     <div class="wrap">
       <div class="reveal">
-        <p class="slabel">Кейсы</p>
+        <p class="slabel">Проекты</p>
         <h2 class="stitle">Проекты, которые <span>я создаю.</span></h2>
       </div>
       <div class="cases-grid">
@@ -317,39 +329,52 @@ footer a:hover{color:var(--fg)}
         <div class="glass case-card reveal">
           <span class="case-tag">Бизнес-анализ</span>
           <h3>Выход на рынок пептидов</h3>
-          <p>Аналитика рынка и стратегия продвижения для производителя из Китая при запуске продаж в России.</p>
+          <p>Производитель из Китая хотел выйти на российский рынок. Проанализировал 19 конкурентов, нашёл 4 свободные позиции и определил 3 канала для первых продаж.</p>
           <div class="case-stats">
             <div><strong>19</strong><span>конкурентов разобрано</span></div>
-            <div><strong>3</strong><span>канала привлечения</span></div>
-            <div><strong>+40%</strong><span>прогноз конверсии</span></div>
+            <div><strong>4</strong><span>свободные позиции</span></div>
+            <div><strong>3</strong><span>канала продаж</span></div>
           </div>
         </div>
         <div class="glass case-card reveal">
-          <span class="case-tag">Digital-система</span>
+          <span class="case-tag">Сайт + Telegram-бот</span>
           <h3>Кофейня «Зерно»</h3>
-          <p>Редизайн сайта и Telegram-бот для приёма заказов. Полный цикл: аудит конкурентов, прототип, запуск.</p>
+          <p>Редизайн сайта и Telegram-бот для приёма заказов. Полный цикл: аудит 5 конкурентов, прототип, разработка и запуск за 14 дней.</p>
           <div class="case-stats">
-            <div><strong>+65%</strong><span>рост заявок</span></div>
-            <div><strong>2.5x</strong><span>быстрее обработка</span></div>
+            <div><strong>5</strong><span>конкурентов в аудите</span></div>
             <div><strong>14</strong><span>дней до запуска</span></div>
+            <div><strong>2</strong><span>продукта: сайт + бот</span></div>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- RESULTS -->
+  <!-- CTA MID -->
+  <section class="s" style="padding-top:60px;padding-bottom:60px">
+    <div class="wrap">
+      <div class="glass reveal" style="padding:48px 32px;text-align:center;border-color:rgba(0,255,170,.2)">
+        <h3 style="font-size:clamp(1.6rem,3.5vw,2.4rem);font-weight:800;letter-spacing:-.02em">Есть похожая задача?</h3>
+        <p style="font-size:15px;color:var(--fg2);margin-top:12px;max-width:480px;margin-left:auto;margin-right:auto">Расскажите о вашем бизнесе. Я изучу ситуацию и предложу конкретное решение.</p>
+        <a href="https://t.me/valevskiy_studio" target="_blank" class="btn-mint" style="display:inline-block;margin-top:20px;padding:14px 32px;font-size:15px">Обсудить проект</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- DELIVERABLES -->
   <section class="s">
     <div class="wrap">
       <div class="reveal">
-        <p class="slabel">Результаты</p>
-        <h2 class="stitle">Цифры после <span>сотрудничества.</span></h2>
+        <p class="slabel">Что вы получаете</p>
+        <h2 class="stitle">Конкретные результаты <span>каждого проекта.</span></h2>
       </div>
-      <div class="metrics-grid reveal">
-        <div class="glass metric"><span class="metric-num">+40%</span><span class="metric-label">средний рост выручки клиентов</span></div>
-        <div class="glass metric"><span class="metric-num">+65%</span><span class="metric-label">конверсия сайта после редизайна</span></div>
-        <div class="glass metric"><span class="metric-num">19+</span><span class="metric-label">конкурентов в каждом анализе</span></div>
-        <div class="glass metric"><span class="metric-num">7-14</span><span class="metric-label">дней от старта до запуска</span></div>
+      <div class="deliverables-grid reveal">
+        <div class="glass deliverable"><span class="d-icon">&#x1F50D;</span><h4>Карта конкурентов</h4><p>Подробный разбор 3-5 игроков рынка: их сильные стороны, слабости и возможности для вас.</p></div>
+        <div class="glass deliverable"><span class="d-icon">&#x1F4CB;</span><h4>Список проблем</h4><p>Что мешает вашему бизнесу расти в digital. Конкретные барьеры с приоритетами.</p></div>
+        <div class="glass deliverable"><span class="d-icon">&#x1F4C8;</span><h4>Точки роста</h4><p>Где именно можно усилить позиции. Свободные ниши и незанятые каналы.</p></div>
+        <div class="glass deliverable"><span class="d-icon">&#x1F3AF;</span><h4>Рекомендации по структуре</h4><p>Какие страницы нужны, что писать в каждом блоке, как вести пользователя к заявке.</p></div>
+        <div class="glass deliverable"><span class="d-icon">&#x1F4AC;</span><h4>Позиционирование</h4><p>Чем вы отличаетесь от конкурентов и как это показать на сайте и в коммуникациях.</p></div>
+        <div class="glass deliverable"><span class="d-icon">&#x2705;</span><h4>Готовый продукт</h4><p>Сайт, бот или Mini App с подключённой аналитикой. Готов к работе с первого дня.</p></div>
       </div>
     </div>
   </section>
@@ -364,9 +389,9 @@ footer a:hover{color:var(--fg)}
       <div class="about-grid reveal">
         <div class="about-avatar">V</div>
         <div class="about-text">
-          <p>Изучаю бизнес-анализ и применяю его на практике. Перед каждым проектом провожу аудит конкурентов, чтобы создавать не просто красивые интерфейсы, а решения под реальные задачи бизнеса.</p>
-          <p>Работаю с современными инструментами и веду проект от анализа до запуска с подключением аналитики.</p>
-          <div class="about-tags"><span>Бизнес-анализ</span><span>Web</span><span>Telegram Mini Apps</span><span>Яндекс.Метрика</span></div>
+          <p>Я соединяю бизнес-анализ и разработку digital-продуктов. Каждый проект начинаю с исследования рынка: разбираю конкурентов, изучаю аудиторию и нахожу точки роста. Только после этого проектирую решение.</p>
+          <p>Веду проект от аудита до запуска. Сайты, Telegram-боты и Mini Apps с подключённой аналитикой. Работаю удалённо с бизнесами по всей России.</p>
+          <div class="about-tags"><span>Бизнес-анализ</span><span>Web-разработка</span><span>Telegram Mini Apps</span><span>Аналитика</span></div>
         </div>
       </div>
     </div>
@@ -394,21 +419,53 @@ footer a:hover{color:var(--fg)}
     </div>
   </section>
 
+  <!-- FAQ -->
+  <section class="s" id="faq">
+    <div class="wrap">
+      <div class="reveal">
+        <p class="slabel">Вопросы</p>
+        <h2 class="stitle">Частые вопросы <span>от клиентов.</span></h2>
+      </div>
+      <div class="faq-list reveal">
+        <div class="glass faq-item">
+          <button class="faq-q" onclick="this.parentElement.classList.toggle('open')">Сколько времени занимает проект?</button>
+          <div class="faq-a"><p>Экспресс-аудит готов за 2-3 дня. Сайт или Telegram-бот от 7 до 21 дня в зависимости от сложности. Точные сроки обсуждаем после изучения задачи.</p></div>
+        </div>
+        <div class="glass faq-item">
+          <button class="faq-q" onclick="this.parentElement.classList.toggle('open')">Что если у меня нет дизайна?</button>
+          <div class="faq-a"><p>Дизайн входит в стоимость. Я проектирую интерфейс на основе анализа конкурентов и задач вашего бизнеса. Вы получаете готовый продукт.</p></div>
+        </div>
+        <div class="glass faq-item">
+          <button class="faq-q" onclick="this.parentElement.classList.toggle('open')">Можно заказать только аудит без разработки?</button>
+          <div class="faq-a"><p>Да. Экспресс-аудит работает как самостоятельный продукт. Вы получите PDF с разбором конкурентов и рекомендациями, которые можно передать любому разработчику.</p></div>
+        </div>
+        <div class="glass faq-item">
+          <button class="faq-q" onclick="this.parentElement.classList.toggle('open')">Как проходит оплата?</button>
+          <div class="faq-a"><p>Предоплата 50% перед стартом, остаток после сдачи проекта. Для аудита возможна полная предоплата.</p></div>
+        </div>
+        <div class="glass faq-item">
+          <button class="faq-q" onclick="this.parentElement.classList.toggle('open')">Работаете ли вы с бизнесами из других городов?</button>
+          <div class="faq-a"><p>Да, работаю удалённо с бизнесами по всей России и за рубежом. Вся коммуникация через Telegram и видеозвонки.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- CONTACT -->
   <section class="s contact-section" id="contact">
     <div class="wrap">
       <div class="contact-card reveal">
         <div class="contact-inner">
           <div>
-            <h2>Давайте обсудим проект.</h2>
-            <p>Оставьте ваш Telegram или другую соцсеть для связи. Я изучу задачу и напишу вам с предложением.</p>
+            <h2>Расскажите, что нужно бизнесу.</h2>
+            <p>Оставьте контакт и коротко опишите задачу. Я изучу ситуацию и пришлю предложение с конкретными шагами.</p>
           </div>
           <div>
             <form id="contactForm" onsubmit="submitForm(event)">
               <input required name="name" placeholder="Ваше имя"/>
               <input required name="contact" placeholder="@username в Telegram или ссылка на соцсеть"/>
               <textarea name="task" placeholder="Коротко о задаче (необязательно)"></textarea>
-              <button type="submit">Оставить заявку →</button>
+              <button type="submit">Получить предложение →</button>
             </form>
             <p style="font-size:13px;color:rgba(6,6,5,.4);margin-top:10px" id="formNote">Мы свяжемся с вами в течение 24 часов.</p>
           </div>
