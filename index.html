@@ -133,7 +133,8 @@ section.s{padding:100px 0;position:relative;z-index:2}
 /* ABOUT */
 .about-grid{display:grid;gap:48px;margin-top:48px;align-items:center}
 @media(min-width:768px){.about-grid{grid-template-columns:1fr 1.4fr}}
-.about-avatar{width:100%;max-width:340px;aspect-ratio:1;border-radius:var(--radius);background:linear-gradient(135deg,rgba(0,255,170,.1),var(--panel));border:1px solid rgba(255,255,255,.08);display:flex;align-items:center;justify-content:center;font-size:8rem;font-weight:900;color:rgba(229,230,230,.75);letter-spacing:-.08em}
+.about-avatar{width:100%;max-width:340px;aspect-ratio:1;border-radius:var(--radius);background:linear-gradient(135deg,rgba(0,255,170,.1),var(--panel));border:1px solid rgba(255,255,255,.08);display:flex;align-items:center;justify-content:center;overflow:hidden}
+.about-avatar img{width:85%;height:85%;object-fit:contain}
 .about-text p{font-size:16px;color:var(--fg2);line-height:1.65;margin-top:16px}
 .about-tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:24px}
 .about-tags span{font-size:13px;color:var(--fg3);border:1px solid rgba(255,255,255,.08);border-radius:100px;padding:6px 16px}
@@ -387,11 +388,12 @@ footer a:hover{color:var(--fg)}
         <h2 class="stitle">Руслан. <span>Делаю digital-продукты.</span></h2>
       </div>
       <div class="about-grid reveal">
-        <div class="about-avatar">V</div>
+        <div class="about-avatar"><img src="memoji.png" alt="Руслан" width="280" height="280"/></div>
         <div class="about-text">
-          <p>Я соединяю бизнес-анализ и разработку digital-продуктов. Каждый проект начинаю с исследования рынка: разбираю конкурентов, изучаю аудиторию и нахожу точки роста. Только после этого проектирую решение.</p>
-          <p>Веду проект от аудита до запуска. Сайты, Telegram-боты и Mini Apps с подключённой аналитикой. Работаю удалённо с бизнесами по всей России.</p>
-          <div class="about-tags"><span>Бизнес-анализ</span><span>Web-разработка</span><span>Telegram Mini Apps</span><span>Аналитика</span></div>
+          <p>Я соединяю бизнес-анализ и разработку digital-продуктов. Перед тем как писать код, разбираю рынок: анализирую конкурентов, изучаю аудиторию, нахожу свободные ниши. Только после этого проектирую решение.</p>
+          <p>Мой подход проверен на реальных проектах. Для производителя из Китая провёл анализ 19 конкурентов и нашёл 4 свободные позиции для выхода на российский рынок. Для ВЫДОХ спроектировал Telegram Mini App с каталогом 732 товаров и AI-ассистентом.</p>
+          <p>Веду проект от аудита до запуска с подключённой аналитикой. Работаю удалённо с бизнесами по всей России.</p>
+          <div class="about-tags"><span>Анализ конкурентов</span><span>Web-разработка</span><span>Telegram Mini Apps</span><span>Стратегия продвижения</span><span>Аналитика</span></div>
         </div>
       </div>
     </div>
