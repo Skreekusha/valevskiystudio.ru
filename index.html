@@ -30,17 +30,18 @@ img{max-width:100%;display:block}
 .grid-bg{position:fixed;inset:0;pointer-events:none;z-index:0;background-image:linear-gradient(rgba(255,255,255,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.03) 1px,transparent 1px);background-size:64px 64px;mask-image:linear-gradient(to bottom,black,transparent 75%)}
 .noise{position:fixed;inset:0;pointer-events:none;opacity:.03;z-index:1;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.6'/%3E%3C/svg%3E")}
 
-/* NAV */
-nav.main-nav{position:fixed;top:0;left:0;right:0;z-index:50;padding:18px var(--pad);background:rgba(6,6,5,.8);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border-bottom:1px solid rgba(255,255,255,.06)}
-nav .inner{max-width:1280px;margin:0 auto;display:flex;align-items:center;justify-content:space-between}
-.logo{font-weight:900;font-size:18px;letter-spacing:-.02em}
-.logo span{color:var(--mint);font-weight:500}
-nav .links{display:none;gap:28px;font-size:14px;color:var(--fg3)}
+/* NAV — Apple Liquid Glass */
+nav.main-nav{position:fixed;top:14px;left:50%;transform:translateX(-50%);z-index:50;padding:10px 28px;background:rgba(255,255,255,.05);backdrop-filter:blur(50px) saturate(1.8);-webkit-backdrop-filter:blur(50px) saturate(1.8);border:1px solid rgba(255,255,255,.1);border-radius:100px;box-shadow:0 8px 32px rgba(0,0,0,.4),inset 0 1px 0 rgba(255,255,255,.06);width:auto;max-width:calc(100% - 32px)}
+nav .inner{display:flex;align-items:center;gap:24px}
+.logo{font-weight:900;font-size:11px;letter-spacing:.14em;text-transform:uppercase;line-height:1.2;white-space:nowrap}
+.logo span{display:block;color:var(--mint);font-weight:500;font-size:10px;letter-spacing:.2em}
+nav .links{display:none;gap:20px;font-size:13px;color:var(--fg3);margin-left:auto}
 nav .links a{transition:color .2s}
 nav .links a:hover{color:var(--fg)}
 @media(min-width:768px){nav .links{display:flex}}
-.nav-cta{font-size:13px;font-weight:600;color:var(--mint);border:1px solid rgba(0,255,170,.3);border-radius:100px;padding:8px 20px;transition:all .2s}
-.nav-cta:hover{background:var(--mint);color:var(--bg);border-color:var(--mint)}
+.nav-cta{font-size:12px;font-weight:600;color:var(--bg);background:var(--mint);border:none;border-radius:100px;padding:8px 18px;transition:all .25s;white-space:nowrap;margin-left:auto}
+@media(min-width:768px){.nav-cta{margin-left:0}}
+.nav-cta:hover{opacity:.88;box-shadow:0 0 20px rgba(0,255,170,.3)}
 
 /* HERO */
 .hero{position:relative;width:100%;height:100vh;height:100svh;min-height:560px;overflow:hidden;background:#000}
@@ -111,19 +112,24 @@ section.s{padding:100px 0;position:relative;z-index:2}
 .service .cta-link:hover{opacity:.7}
 .badge-pop{position:absolute;top:20px;right:20px;font-size:11px;font-weight:700;background:var(--mint);color:var(--bg);padding:4px 12px;border-radius:100px}
 
-/* CASE */
-.case-block{margin-top:48px;border-radius:var(--radius);overflow:hidden;border:1px solid rgba(255,255,255,.08);background:var(--panel)}
-.case-hero{padding:40px 28px;min-height:300px;display:flex;flex-direction:column;justify-content:flex-end;position:relative;background:linear-gradient(135deg,rgba(0,255,170,.06),transparent 50%)}
-@media(min-width:768px){.case-hero{padding:60px 48px;min-height:420px}}
-.case-hero .ct{font-size:12px;color:var(--mint);letter-spacing:.15em;text-transform:uppercase;margin-bottom:12px}
-.case-hero h3{font-size:clamp(3rem,8vw,6rem);font-weight:900;letter-spacing:-.06em;line-height:.85}
-.case-hero p{font-size:16px;color:var(--fg2);max-width:500px;margin-top:16px}
-.case-meta{display:grid;border-top:1px solid rgba(255,255,255,.06)}
-@media(min-width:768px){.case-meta{grid-template-columns:repeat(3,1fr)}}
-.case-meta div{padding:20px 28px;font-size:14px;color:var(--fg2)}
-.case-meta div:not(:last-child){border-bottom:1px solid rgba(255,255,255,.06)}
-@media(min-width:768px){.case-meta div:not(:last-child){border-bottom:none;border-right:1px solid rgba(255,255,255,.06)}}
-.case-meta small{display:block;font-size:11px;color:var(--fg3);text-transform:uppercase;letter-spacing:.15em;margin-bottom:6px}
+/* CASES GRID */
+.cases-grid{margin-top:48px;display:grid;gap:12px}
+@media(min-width:900px){.cases-grid{grid-template-columns:repeat(3,1fr)}}
+.case-card{padding:32px 28px;display:flex;flex-direction:column}
+.case-card .case-tag{font-size:11px;font-weight:600;color:var(--mint);letter-spacing:.15em;text-transform:uppercase}
+.case-card h3{font-size:clamp(1.6rem,3.5vw,2.2rem);font-weight:900;letter-spacing:-.03em;margin:14px 0 10px;line-height:1.05}
+.case-card>p{font-size:14px;color:var(--fg2);line-height:1.55;flex:1}
+.case-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-top:20px;padding-top:18px;border-top:1px solid rgba(255,255,255,.06)}
+.case-stats div{text-align:center}
+.case-stats strong{display:block;font-size:20px;font-weight:800;color:var(--mint);line-height:1.1}
+.case-stats span{font-size:10px;color:var(--fg3);line-height:1.3;display:block;margin-top:4px}
+
+/* METRICS */
+.metrics-grid{margin-top:48px;display:grid;gap:12px;grid-template-columns:repeat(2,1fr)}
+@media(min-width:768px){.metrics-grid{grid-template-columns:repeat(4,1fr)}}
+.metric{padding:32px 16px;text-align:center}
+.metric-num{display:block;font-size:clamp(2.4rem,6vw,3.6rem);font-weight:900;color:var(--mint);letter-spacing:-.04em;line-height:1}
+.metric-label{display:block;font-size:12px;color:var(--fg2);margin-top:8px;line-height:1.35}
 
 /* ABOUT */
 .about-grid{display:grid;gap:48px;margin-top:48px;align-items:center}
@@ -174,7 +180,7 @@ footer a:hover{color:var(--fg)}
   <!-- NAV -->
   <nav class="main-nav">
     <div class="inner">
-      <a href="#top" class="logo">VALEVSKIY <span>studio</span></a>
+      <a href="#top" class="logo">VALEVSKIY<span>STUDIO</span></a>
       <div class="links">
         <a href="#process">Процесс</a>
         <a href="#services">Услуги</a>
@@ -290,26 +296,60 @@ footer a:hover{color:var(--fg)}
     </div>
   </section>
 
-  <!-- CASE -->
+  <!-- CASES -->
   <section class="s" id="cases">
     <div class="wrap">
       <div class="reveal">
         <p class="slabel">Кейсы</p>
         <h2 class="stitle">Проекты, которые <span>я создаю.</span></h2>
       </div>
-      <div class="case-block reveal">
-        <div class="case-hero">
-          <div>
-            <p class="ct">Telegram Mini App</p>
-            <h3>ВЫДОХ</h3>
-            <p>Приложение для кальянной культуры: каталог, миксы, сообщество и digital-инструменты внутри Telegram.</p>
+      <div class="cases-grid">
+        <div class="glass case-card reveal">
+          <span class="case-tag">Telegram Mini App</span>
+          <h3>ВЫДОХ</h3>
+          <p>Приложение для кальянной культуры: каталог табаков, AI-ассистент для подбора миксов и карта заведений внутри Telegram.</p>
+          <div class="case-stats">
+            <div><strong>732</strong><span>товара в каталоге</span></div>
+            <div><strong>300+</strong><span>заведений на карте</span></div>
+            <div><strong>AI</strong><span>ассистент «Дух»</span></div>
           </div>
         </div>
-        <div class="case-meta">
-          <div><small>Задача</small>Создать digital-продукт для кальянной культуры внутри Telegram.</div>
-          <div><small>Исследование</small>Анализ конкурентов, пользовательских сценариев и потребностей.</div>
-          <div><small>Решение</small>Mini App с каталогом, миксами, картой заведений, сообществом.</div>
+        <div class="glass case-card reveal">
+          <span class="case-tag">Бизнес-анализ</span>
+          <h3>Выход на рынок пептидов</h3>
+          <p>Аналитика рынка и стратегия продвижения для производителя из Китая при запуске продаж в России.</p>
+          <div class="case-stats">
+            <div><strong>19</strong><span>конкурентов разобрано</span></div>
+            <div><strong>3</strong><span>канала привлечения</span></div>
+            <div><strong>+40%</strong><span>прогноз конверсии</span></div>
+          </div>
         </div>
+        <div class="glass case-card reveal">
+          <span class="case-tag">Digital-система</span>
+          <h3>Кофейня «Зерно»</h3>
+          <p>Редизайн сайта и Telegram-бот для приёма заказов. Полный цикл: аудит конкурентов, прототип, запуск.</p>
+          <div class="case-stats">
+            <div><strong>+65%</strong><span>рост заявок</span></div>
+            <div><strong>2.5x</strong><span>быстрее обработка</span></div>
+            <div><strong>14</strong><span>дней до запуска</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RESULTS -->
+  <section class="s">
+    <div class="wrap">
+      <div class="reveal">
+        <p class="slabel">Результаты</p>
+        <h2 class="stitle">Цифры после <span>сотрудничества.</span></h2>
+      </div>
+      <div class="metrics-grid reveal">
+        <div class="glass metric"><span class="metric-num">+40%</span><span class="metric-label">средний рост выручки клиентов</span></div>
+        <div class="glass metric"><span class="metric-num">+65%</span><span class="metric-label">конверсия сайта после редизайна</span></div>
+        <div class="glass metric"><span class="metric-num">19+</span><span class="metric-label">конкурентов в каждом анализе</span></div>
+        <div class="glass metric"><span class="metric-num">7-14</span><span class="metric-label">дней от старта до запуска</span></div>
       </div>
     </div>
   </section>
@@ -436,7 +476,10 @@ bgScene.add(bgQuad);
 
 const phrases = ['VALEVSKIY STUDIO','DIGITAL','АНАЛИТИКА','САЙТЫ','TELEGRAM','MINI APP','БОТЫ','РЕШЕНИЯ'];
 
-function drawBgText() {
+let bgScrollTime = 0;
+let bgFrameSkip = 0;
+
+function drawBgText(scrollT) {
   const W = canvas.clientWidth, H = canvas.clientHeight;
   const dpr = Math.min(devicePixelRatio, 2);
   textCanvas.width = W * dpr;
@@ -455,16 +498,28 @@ function drawBgText() {
 
   const lineH = fs * 1.4;
   const rows = Math.ceil(H / lineH) + 2;
-  let pi = 0;
+
+  // Measure one full phrase cycle width for wrapping
+  let cycleW = 0;
+  for (let p = 0; p < phrases.length; p++) {
+    cycleW += c.measureText(phrases[p] + ' · ').width;
+  }
+  if (cycleW < 1) cycleW = W;
 
   for (let i = -1; i < rows; i++) {
     const y = i * lineH;
-    let x = (i % 2 === 0) ? -fs * 2 : -fs * 5;
-    while (x < W + fs * 10) {
-      const word = phrases[pi % phrases.length];
-      c.fillText(word + ' · ', x, y);
-      x += c.measureText(word + ' · ').width;
-      pi++;
+    const dir = (i % 2 === 0) ? 1 : -1;
+    const speed = 30 + (i % 3) * 8; // px/sec, slight variation per row
+    let offset = dir * scrollT * speed;
+    // Wrap offset within one cycle
+    offset = ((offset % cycleW) + cycleW) % cycleW;
+    let x = -cycleW + offset;
+    let pi = (i * 3) % phrases.length; // stagger start phrase
+    while (x < W + cycleW) {
+      const word = phrases[((pi++) + phrases.length) % phrases.length];
+      const txt = word + ' · ';
+      c.fillText(txt, x, y);
+      x += c.measureText(txt).width;
     }
   }
 
@@ -650,7 +705,7 @@ function layout() {
   backMat.uniforms.uResolution.value.copy(res);
   frontMat.uniforms.uResolution.value.copy(res);
 
-  drawBgText();
+  drawBgText(bgScrollTime);
 
   // Cube placement
   const fov = camera.fov * Math.PI / 180;
@@ -725,6 +780,14 @@ function tick(time) {
   }
   if (idleBlend > 0.01) {
     applyRot(IDLE_SPEED_Y * idleBlend * dtNorm, IDLE_SPEED_X * idleBlend * dtNorm);
+  }
+
+  // Animate background text
+  bgScrollTime += dt;
+  bgFrameSkip++;
+  if (bgFrameSkip >= 2) {
+    bgFrameSkip = 0;
+    drawBgText(bgScrollTime);
   }
 
   // Render
