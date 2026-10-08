@@ -1,0 +1,1337 @@
+<title>VALEVSKIY STUDIO</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap">
+<style>
+:root {
+  --bg: #0c0c0c;
+  --bg-elevated: #141210;
+  --bg-card: #1a1714;
+  --fg: #f5f0eb;
+  --fg-muted: #9a9189;
+  --fg-dim: #5c554e;
+  --accent: #e8c547;
+  --accent-dim: rgba(232,197,71,0.12);
+  --border: #2a2520;
+  --radius: 12px;
+  --font-display: 'Space Grotesk', system-ui, sans-serif;
+  --font-body: 'Inter', system-ui, sans-serif;
+  color-scheme: dark;
+}
+
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme="dark"]) {
+    --bg: #faf8f5;
+    --bg-elevated: #f0ece7;
+    --bg-card: #ffffff;
+    --fg: #1a1510;
+    --fg-muted: #6b6259;
+    --fg-dim: #9a9189;
+    --accent: #c4930a;
+    --accent-dim: rgba(196,147,10,0.1);
+    --border: #e0dbd5;
+    color-scheme: light;
+  }
+}
+
+:root[data-theme="light"] {
+  --bg: #faf8f5;
+  --bg-elevated: #f0ece7;
+  --bg-card: #ffffff;
+  --fg: #1a1510;
+  --fg-muted: #6b6259;
+  --fg-dim: #9a9189;
+  --accent: #c4930a;
+  --accent-dim: rgba(196,147,10,0.1);
+  --border: #e0dbd5;
+  color-scheme: light;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-body);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding-inline: 24px;
+}
+
+/* ── NAV ── */
+nav {
+  position: fixed;
+  top: env(safe-area-inset-top, 0px);
+  left: 0; right: 0;
+  z-index: 100;
+  padding: 20px 0;
+  background: rgba(12,12,12,0.85);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border);
+  transition: background 0.3s;
+}
+
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme="dark"]) nav {
+    background: rgba(250,248,245,0.85);
+  }
+}
+:root[data-theme="light"] nav {
+  background: rgba(245,245,240,0.85);
+}
+
+nav .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-family: var(--font-display);
+  font-size: 1.125rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--fg);
+  text-decoration: none;
+}
+
+.nav-links {
+  display: flex;
+  gap: 32px;
+  list-style: none;
+}
+
+.nav-links a {
+  color: var(--fg-muted);
+  text-decoration: none;
+  font-size: 0.875rem;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+
+.nav-links a:hover { color: var(--fg); }
+
+.nav-cta {
+  background: var(--accent);
+  color: var(--bg);
+  padding: 10px 24px;
+  border-radius: 100px;
+  text-decoration: none;
+  font-size: 0.875rem;
+  font-weight: 600;
+  font-family: var(--font-display);
+  transition: transform 0.2s, opacity 0.2s;
+}
+
+.nav-cta:hover { transform: scale(1.03); opacity: 0.9; }
+
+.burger { display: none; background: none; border: none; cursor: pointer; padding: 8px; }
+.burger span { display: block; width: 24px; height: 2px; background: var(--fg); margin: 5px 0; transition: 0.3s; border-radius: 2px; }
+
+@media (max-width: 768px) {
+  .nav-links, .nav-cta-wrap { display: none; }
+  .burger { display: block; }
+  .nav-links.open {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    left: 0; right: 0;
+    background: var(--bg-elevated);
+    padding: 24px;
+    gap: 20px;
+    border-bottom: 1px solid var(--border);
+  }
+}
+
+/* ── HERO ── */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-top: 100px;
+  padding-bottom: 80px;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -200px;
+  right: -200px;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(232,197,71,0.08) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.hero-tag {
+  font-family: var(--font-display);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--fg-dim);
+  margin-bottom: 32px;
+}
+
+.hero h1 {
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 7vw, 5.5rem);
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  text-wrap: balance;
+  max-width: 900px;
+  margin-bottom: 28px;
+}
+
+.hero h1 .accent-word {
+  color: var(--accent);
+}
+
+.hero-sub {
+  font-size: clamp(1rem, 2vw, 1.25rem);
+  color: var(--fg-muted);
+  max-width: 560px;
+  line-height: 1.7;
+  margin-bottom: 48px;
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--accent);
+  color: var(--bg);
+  padding: 16px 36px;
+  border-radius: 100px;
+  text-decoration: none;
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 600;
+  transition: transform 0.2s, opacity 0.2s;
+  border: none;
+  cursor: pointer;
+}
+
+.btn-primary:hover { transform: scale(1.03); opacity: 0.9; }
+
+.btn-outline {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: transparent;
+  color: var(--fg);
+  padding: 16px 36px;
+  border-radius: 100px;
+  text-decoration: none;
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 600;
+  border: 1px solid var(--border);
+  transition: border-color 0.2s, background 0.2s;
+  cursor: pointer;
+}
+
+.btn-outline:hover { border-color: var(--fg-muted); background: var(--accent-dim); }
+
+/* ── PROCESS ── */
+.process {
+  padding: 120px 0;
+  border-top: 1px solid var(--border);
+}
+
+.section-tag {
+  font-family: var(--font-display);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--fg-dim);
+  margin-bottom: 20px;
+}
+
+.section-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.75rem, 4vw, 3rem);
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+  max-width: 700px;
+  margin-bottom: 64px;
+}
+
+.process-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2px;
+}
+
+@media (max-width: 768px) {
+  .process-grid { grid-template-columns: 1fr 1fr; gap: 2px; }
+}
+
+@media (max-width: 480px) {
+  .process-grid { grid-template-columns: 1fr; }
+}
+
+.process-step {
+  background: var(--bg-card);
+  padding: 40px 28px;
+  position: relative;
+}
+
+.process-step:first-child { border-radius: var(--radius) 0 0 var(--radius); }
+.process-step:last-child { border-radius: 0 var(--radius) var(--radius) 0; }
+
+@media (max-width: 768px) {
+  .process-step:first-child { border-radius: var(--radius) 0 0 0; }
+  .process-step:nth-child(2) { border-radius: 0 var(--radius) 0 0; }
+  .process-step:nth-child(3) { border-radius: 0 0 0 var(--radius); }
+  .process-step:last-child { border-radius: 0 0 var(--radius) 0; }
+}
+
+@media (max-width: 480px) {
+  .process-step:first-child { border-radius: var(--radius) var(--radius) 0 0; }
+  .process-step:nth-child(2), .process-step:nth-child(3) { border-radius: 0; }
+  .process-step:last-child { border-radius: 0 0 var(--radius) var(--radius); }
+}
+
+.step-num {
+  font-family: var(--font-display);
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--accent);
+  letter-spacing: 0.1em;
+  margin-bottom: 20px;
+}
+
+.process-step h3 {
+  font-family: var(--font-display);
+  font-size: 1.125rem;
+  font-weight: 600;
+  margin-bottom: 12px;
+  line-height: 1.3;
+}
+
+.process-step p {
+  font-size: 0.875rem;
+  color: var(--fg-muted);
+  line-height: 1.6;
+}
+
+/* ── PAIN ── */
+.pain {
+  padding: 120px 0;
+  border-top: 1px solid var(--border);
+}
+
+.pain-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+@media (max-width: 600px) {
+  .pain-grid { grid-template-columns: 1fr; }
+}
+
+.pain-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 32px;
+  transition: border-color 0.25s;
+}
+
+.pain-card:hover { border-color: var(--fg-dim); }
+
+.pain-icon {
+  font-size: 1.5rem;
+  margin-bottom: 16px;
+  opacity: 0.7;
+}
+
+.pain-card h3 {
+  font-family: var(--font-display);
+  font-size: 1.0625rem;
+  font-weight: 600;
+  margin-bottom: 8px;
+  line-height: 1.3;
+}
+
+.pain-card p {
+  font-size: 0.875rem;
+  color: var(--fg-muted);
+  line-height: 1.6;
+}
+
+/* ── SERVICES ── */
+.services {
+  padding: 120px 0;
+  border-top: 1px solid var(--border);
+}
+
+.tiers {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2px;
+}
+
+@media (max-width: 768px) {
+  .tiers { grid-template-columns: 1fr; gap: 16px; }
+}
+
+.tier {
+  background: var(--bg-card);
+  padding: 40px 32px;
+  display: flex;
+  flex-direction: column;
+}
+
+.tier:first-child { border-radius: var(--radius) 0 0 var(--radius); }
+.tier:last-child { border-radius: 0 var(--radius) var(--radius) 0; }
+
+@media (max-width: 768px) {
+  .tier:first-child, .tier:last-child { border-radius: var(--radius); }
+  .tier:nth-child(2) { border-radius: var(--radius); }
+}
+
+.tier-featured {
+  background: var(--bg-elevated);
+  border: 1px solid var(--accent);
+  border-radius: var(--radius);
+  position: relative;
+}
+
+.tier-badge {
+  position: absolute;
+  top: -12px;
+  left: 32px;
+  background: var(--accent);
+  color: var(--bg);
+  font-family: var(--font-display);
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 4px 14px;
+  border-radius: 100px;
+}
+
+.tier-name {
+  font-family: var(--font-display);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--fg-dim);
+  margin-bottom: 12px;
+}
+
+.tier h3 {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+  line-height: 1.2;
+}
+
+.tier-price {
+  font-family: var(--font-display);
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--accent);
+  margin-bottom: 24px;
+}
+
+.tier-desc {
+  font-size: 0.9375rem;
+  color: var(--fg-muted);
+  margin-bottom: 28px;
+  line-height: 1.6;
+}
+
+.tier-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 32px;
+  flex-grow: 1;
+}
+
+.tier-list li {
+  font-size: 0.875rem;
+  color: var(--fg-muted);
+  padding-left: 24px;
+  position: relative;
+  line-height: 1.5;
+}
+
+.tier-list li::before {
+  content: '→';
+  position: absolute;
+  left: 0;
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.tier .btn-primary, .tier .btn-outline {
+  width: 100%;
+  justify-content: center;
+  padding: 14px 24px;
+  font-size: 0.875rem;
+  margin-top: auto;
+}
+
+/* ── CASE ── */
+.cases {
+  padding: 120px 0;
+  border-top: 1px solid var(--border);
+}
+
+.case-card {
+  background: var(--bg-card);
+  border-radius: var(--radius);
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 480px;
+}
+
+@media (max-width: 768px) {
+  .case-card { grid-template-columns: 1fr; min-height: auto; }
+}
+
+.case-visual {
+  background: linear-gradient(135deg, #1a1610 0%, #2a1f12 50%, #1a1208 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 48px;
+  position: relative;
+  min-height: 300px;
+}
+
+.case-mockup {
+  width: 200px;
+  height: 400px;
+  background: #0a0a0a;
+  border-radius: 28px;
+  border: 3px solid #333;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+}
+
+.mockup-header {
+  background: linear-gradient(135deg, #2a1f12, #3d2a10);
+  padding: 20px 16px 12px;
+  text-align: center;
+}
+
+.mockup-logo {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: 0.05em;
+}
+
+.mockup-sub {
+  font-size: 0.5rem;
+  color: rgba(255,255,255,0.5);
+  margin-top: 2px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+.mockup-body {
+  flex-grow: 1;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.mockup-item {
+  background: #1a1a1a;
+  border-radius: 10px;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.mockup-dot {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  background: linear-gradient(135deg, #3d2a10, #5a3d12);
+  flex-shrink: 0;
+}
+
+.mockup-lines {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  flex-grow: 1;
+}
+
+.mockup-line {
+  height: 6px;
+  background: #252525;
+  border-radius: 3px;
+}
+
+.mockup-line:last-child { width: 60%; }
+
+.mockup-nav {
+  display: flex;
+  justify-content: space-around;
+  padding: 12px;
+  border-top: 1px solid #1a1a1a;
+}
+
+.mockup-nav-dot {
+  width: 20px;
+  height: 3px;
+  background: #333;
+  border-radius: 2px;
+}
+
+.mockup-nav-dot.active { background: #e8c547; }
+
+.case-info {
+  padding: 48px 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+@media (max-width: 768px) {
+  .case-info { padding: 32px 24px; }
+}
+
+.case-tag {
+  font-family: var(--font-display);
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--fg-dim);
+  margin-bottom: 16px;
+}
+
+.case-info h3 {
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  font-weight: 700;
+  margin-bottom: 8px;
+  line-height: 1.2;
+}
+
+.case-type {
+  color: var(--fg-muted);
+  font-size: 0.9375rem;
+  margin-bottom: 24px;
+}
+
+.case-details {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 32px;
+}
+
+.case-detail {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.case-detail-label {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--fg-dim);
+  font-family: var(--font-display);
+}
+
+.case-detail-value {
+  font-size: 0.9375rem;
+  color: var(--fg-muted);
+  line-height: 1.5;
+}
+
+.case-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: var(--accent);
+}
+
+.case-status::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  background: var(--accent);
+  border-radius: 50%;
+}
+
+/* ── ABOUT ── */
+.about {
+  padding: 120px 0;
+  border-top: 1px solid var(--border);
+}
+
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 64px;
+  align-items: center;
+}
+
+@media (max-width: 768px) {
+  .about-grid { grid-template-columns: 1fr; gap: 40px; }
+}
+
+.about-avatar {
+  aspect-ratio: 1;
+  max-width: 400px;
+  background: linear-gradient(135deg, var(--bg-card) 0%, var(--bg-elevated) 100%);
+  border-radius: var(--radius);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--border);
+}
+
+.avatar-placeholder {
+  font-family: var(--font-display);
+  font-size: 4rem;
+  font-weight: 700;
+  color: var(--fg-dim);
+  opacity: 0.3;
+}
+
+.about-text h3 {
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  font-weight: 700;
+  margin-bottom: 20px;
+  line-height: 1.2;
+}
+
+.about-text p {
+  color: var(--fg-muted);
+  font-size: 1rem;
+  line-height: 1.7;
+  margin-bottom: 16px;
+}
+
+.about-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 28px;
+}
+
+.about-tag {
+  background: var(--accent-dim);
+  color: var(--fg-muted);
+  padding: 8px 16px;
+  border-radius: 100px;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  border: 1px solid var(--border);
+}
+
+/* ── REVIEWS ── */
+.reviews {
+  padding: 120px 0;
+  border-top: 1px solid var(--border);
+}
+
+.reviews-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+@media (max-width: 600px) {
+  .reviews-grid { grid-template-columns: 1fr; }
+}
+
+.review-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 32px;
+}
+
+.review-text {
+  font-size: 0.9375rem;
+  color: var(--fg-muted);
+  line-height: 1.7;
+  margin-bottom: 20px;
+  font-style: italic;
+}
+
+.review-author {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.review-photo {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--bg-elevated);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: var(--fg-dim);
+}
+
+.review-name {
+  font-family: var(--font-display);
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+.review-role {
+  font-size: 0.75rem;
+  color: var(--fg-dim);
+}
+
+/* ── CTA / FORM ── */
+.cta-section {
+  padding: 120px 0;
+  border-top: 1px solid var(--border);
+}
+
+.cta-inner {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 64px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: start;
+}
+
+@media (max-width: 768px) {
+  .cta-inner { grid-template-columns: 1fr; padding: 40px 24px; gap: 40px; }
+}
+
+.cta-left h2 {
+  font-family: var(--font-display);
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+  font-weight: 700;
+  margin-bottom: 16px;
+  line-height: 1.15;
+}
+
+.cta-left p {
+  color: var(--fg-muted);
+  font-size: 1rem;
+  line-height: 1.7;
+  margin-bottom: 28px;
+}
+
+.cta-contacts {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.cta-contact {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--fg-muted);
+  font-size: 0.875rem;
+}
+
+.cta-contact-icon {
+  width: 32px;
+  height: 32px;
+  background: var(--accent-dim);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.875rem;
+  flex-shrink: 0;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.form-group input,
+.form-group textarea {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 14px 18px;
+  color: var(--fg);
+  font-family: var(--font-body);
+  font-size: 0.9375rem;
+  transition: border-color 0.2s;
+  width: 100%;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+
+.form-group textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+  color: var(--fg-dim);
+}
+
+.form-submit {
+  width: 100%;
+  justify-content: center;
+}
+
+.form-note {
+  font-size: 0.75rem;
+  color: var(--fg-dim);
+  text-align: center;
+  margin-top: 8px;
+}
+
+/* ── FOOTER ── */
+footer {
+  padding: 40px 0;
+  border-top: 1px solid var(--border);
+}
+
+footer .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.footer-copy {
+  font-size: 0.8125rem;
+  color: var(--fg-dim);
+}
+
+.footer-links {
+  display: flex;
+  gap: 24px;
+  list-style: none;
+}
+
+.footer-links a {
+  color: var(--fg-dim);
+  text-decoration: none;
+  font-size: 0.8125rem;
+  transition: color 0.2s;
+}
+
+.footer-links a:hover { color: var(--fg); }
+
+/* ── ANIMATIONS ── */
+.reveal {
+  opacity: 0;
+  transform: translateY(32px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.stagger-1 { transition-delay: 0.05s; }
+.stagger-2 { transition-delay: 0.1s; }
+.stagger-3 { transition-delay: 0.15s; }
+.stagger-4 { transition-delay: 0.2s; }
+</style>
+
+<!-- NAV -->
+<nav>
+  <div class="container">
+    <a href="#" class="logo">VALEVSKIY<span style="font-weight:500;opacity:0.5;margin-left:8px">STUDIO</span></a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#process">Процесс</a></li>
+      <li><a href="#services">Услуги</a></li>
+      <li><a href="#cases">Кейсы</a></li>
+      <li><a href="#about">Обо мне</a></li>
+    </ul>
+    <div class="nav-cta-wrap"><a href="#contact" class="nav-cta">Обсудить проект</a></div>
+    <button class="burger" id="burger" aria-label="Меню">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-tag reveal">Digital-студия для малого бизнеса</div>
+    <h1 class="reveal stagger-1">Сначала изучаю<br>ваш рынок.<br>Потом создаю <span class="accent-word">решение</span></h1>
+    <p class="hero-sub reveal stagger-2">Сайты, Telegram-боты и Mini App на основе анализа конкурентов. Не просто красиво. Эффективно.</p>
+    <div class="hero-buttons reveal stagger-3">
+      <a href="#contact" class="btn-primary">Обсудить проект ↗</a>
+      <a href="#cases" class="btn-outline">Смотреть кейсы</a>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="process" id="process">
+  <div class="container">
+    <div class="section-tag reveal">Как я работаю</div>
+    <h2 class="section-title reveal stagger-1">Каждый проект начинается с исследования, а не с макета</h2>
+    <div class="process-grid">
+      <div class="process-step reveal stagger-1">
+        <div class="step-num">01</div>
+        <h3>Конкуренты</h3>
+        <p>Анализирую 3–5 ключевых конкурентов вашего бизнеса. Изучаю их сайты, предложения, слабые места.</p>
+      </div>
+      <div class="process-step reveal stagger-2">
+        <div class="step-num">02</div>
+        <h3>Пользователи</h3>
+        <p>Определяю, кто ваши клиенты и что им важно при выборе. Нахожу точки роста.</p>
+      </div>
+      <div class="process-step reveal stagger-3">
+        <div class="step-num">03</div>
+        <h3>Слабые места</h3>
+        <p>Формирую документ с рекомендациями: что исправить, что добавить, на чём сделать акцент.</p>
+      </div>
+      <div class="process-step reveal stagger-4">
+        <div class="step-num">04</div>
+        <h3>Решение</h3>
+        <p>Проектирую и разрабатываю продукт на основе собранных данных. Подключаю аналитику.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PAIN -->
+<section class="pain" id="pain">
+  <div class="container">
+    <div class="section-tag reveal">Знакомо?</div>
+    <h2 class="section-title reveal stagger-1">Проблемы, с которыми приходят клиенты</h2>
+    <div class="pain-grid">
+      <div class="pain-card reveal stagger-1">
+        <div class="pain-icon">📉</div>
+        <h3>Сайт есть, но заявок нет</h3>
+        <p>Дизайн устарел, текст ни о чём, непонятно, почему клиент должен выбрать именно вас.</p>
+      </div>
+      <div class="pain-card reveal stagger-2">
+        <div class="pain-icon">👁</div>
+        <h3>Конкуренты выглядят сильнее</h3>
+        <p>Их сайты профессиональнее, предложение понятнее, и клиенты уходят к ним.</p>
+      </div>
+      <div class="pain-card reveal stagger-3">
+        <div class="pain-icon">🤷</div>
+        <h3>Непонятно, какой бот нужен</h3>
+        <p>Хотите автоматизировать заказы через Telegram, но не знаете, с чего начать и сколько это стоит.</p>
+      </div>
+      <div class="pain-card reveal stagger-4">
+        <div class="pain-icon">🧭</div>
+        <h3>Нет стратегии в digital</h3>
+        <p>Нужен сайт, бот, соцсети. Но что делать первым? Что принесёт результат быстрее?</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div class="container">
+    <div class="section-tag reveal">Услуги</div>
+    <h2 class="section-title reveal stagger-1">Три уровня работы. Выберите свой</h2>
+    <div class="tiers">
+      <div class="tier reveal stagger-1">
+        <div class="tier-name">Анализ</div>
+        <h3>Экспресс-аудит конкурентов</h3>
+        <div class="tier-price">от 5 000 ₽</div>
+        <p class="tier-desc">PDF-документ с разбором 3–5 конкурентов и конкретными рекомендациями для вашего бизнеса.</p>
+        <ul class="tier-list">
+          <li>Анализ сайтов конкурентов</li>
+          <li>Оценка их сильных и слабых сторон</li>
+          <li>Рекомендации по позиционированию</li>
+          <li>Готовый документ за 2–3 дня</li>
+        </ul>
+        <a href="#contact" class="btn-outline">Заказать аудит</a>
+      </div>
+      <div class="tier tier-featured reveal stagger-2">
+        <div class="tier-badge">Популярное</div>
+        <div class="tier-name">Разработка</div>
+        <h3>Сайт или Telegram-бот</h3>
+        <div class="tier-price">от 30 000 ₽</div>
+        <p class="tier-desc">Полноценный digital-продукт на основе аудита конкурентов. Лендинг, многостраничный сайт или Telegram Mini App.</p>
+        <ul class="tier-list">
+          <li>Аудит конкурентов включён</li>
+          <li>Прототип → дизайн → разработка</li>
+          <li>Адаптивная вёрстка</li>
+          <li>Подключение Яндекс.Метрики</li>
+          <li>Срок: 7–21 день</li>
+        </ul>
+        <a href="#contact" class="btn-primary">Обсудить проект</a>
+      </div>
+      <div class="tier reveal stagger-3">
+        <div class="tier-name">Digital-система</div>
+        <h3>Полный пакет для бизнеса</h3>
+        <div class="tier-price">от 80 000 ₽</div>
+        <p class="tier-desc">Комплексное решение: аудит + сайт + Telegram-бот + аналитика + рекомендации по продвижению.</p>
+        <ul class="tier-list">
+          <li>Всё из пакета «Разработка»</li>
+          <li>Telegram-бот для приёма заявок</li>
+          <li>Стратегия продвижения</li>
+          <li>Ежемесячное сопровождение</li>
+        </ul>
+        <a href="#contact" class="btn-outline">Обсудить пакет</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CASES -->
+<section class="cases" id="cases">
+  <div class="container">
+    <div class="section-tag reveal">Кейсы</div>
+    <h2 class="section-title reveal stagger-1">Проекты, которые я реализовал</h2>
+    <div class="case-card reveal stagger-2">
+      <div class="case-visual">
+        <div class="case-mockup">
+          <div class="mockup-header">
+            <div class="mockup-logo">ВЫДОХ</div>
+            <div class="mockup-sub">hookah culture</div>
+          </div>
+          <div class="mockup-body">
+            <div class="mockup-item">
+              <div class="mockup-dot"></div>
+              <div class="mockup-lines"><div class="mockup-line"></div><div class="mockup-line"></div></div>
+            </div>
+            <div class="mockup-item">
+              <div class="mockup-dot"></div>
+              <div class="mockup-lines"><div class="mockup-line"></div><div class="mockup-line"></div></div>
+            </div>
+            <div class="mockup-item">
+              <div class="mockup-dot"></div>
+              <div class="mockup-lines"><div class="mockup-line"></div><div class="mockup-line"></div></div>
+            </div>
+          </div>
+          <div class="mockup-nav">
+            <div class="mockup-nav-dot active"></div>
+            <div class="mockup-nav-dot"></div>
+            <div class="mockup-nav-dot"></div>
+            <div class="mockup-nav-dot"></div>
+          </div>
+        </div>
+      </div>
+      <div class="case-info">
+        <div class="case-tag">Telegram Mini App</div>
+        <h3>ВЫДОХ</h3>
+        <p class="case-type">Приложение для кальянной культуры</p>
+        <div class="case-details">
+          <div class="case-detail">
+            <span class="case-detail-label">Задача</span>
+            <span class="case-detail-value">Создать удобный каталог с возможностью заказа через Telegram</span>
+          </div>
+          <div class="case-detail">
+            <span class="case-detail-label">Исследование</span>
+            <span class="case-detail-value">Анализ конкурентов в нише, изучение пользовательских сценариев</span>
+          </div>
+          <div class="case-detail">
+            <span class="case-detail-label">Решение</span>
+            <span class="case-detail-value">Telegram Mini App с каталогом, корзиной и оформлением заказа</span>
+          </div>
+        </div>
+        <div class="case-status">В разработке</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="container">
+    <div class="section-tag reveal">Обо мне</div>
+    <div class="about-grid">
+      <div class="about-avatar reveal">
+        <div class="avatar-placeholder">R</div>
+      </div>
+      <div class="about-text reveal stagger-1">
+        <h3>Руслан. Делаю digital-продукты для малого бизнеса</h3>
+        <p>Изучаю бизнес-анализ и применяю его на практике. Перед каждым проектом провожу аудит конкурентов, чтобы создавать не просто красивые сайты, а эффективные инструменты для бизнеса.</p>
+        <p>Работаю с нейросетями для создания контента. Веду проекты от анализа до запуска с подключением аналитики.</p>
+        <div class="about-tags">
+          <span class="about-tag">Бизнес-анализ</span>
+          <span class="about-tag">Веб-разработка</span>
+          <span class="about-tag">Telegram Mini Apps</span>
+          <span class="about-tag">Контент-стратегия</span>
+          <span class="about-tag">Яндекс.Метрика</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section class="reviews" id="reviews">
+  <div class="container">
+    <div class="section-tag reveal">Отзывы</div>
+    <h2 class="section-title reveal stagger-1">Что говорят клиенты</h2>
+    <div class="reviews-grid">
+      <div class="review-card reveal stagger-1">
+        <p class="review-text">«Руслан не просто сделал сайт. Сначала показал, что делают конкуренты, где у них слабые места. И на основе этого предложил решение. Такого подхода я не встречал.»</p>
+        <div class="review-author">
+          <div class="review-photo">А</div>
+          <div>
+            <div class="review-name">Алексей К.</div>
+            <div class="review-role">Владелец кофейни</div>
+          </div>
+        </div>
+      </div>
+      <div class="review-card reveal stagger-2">
+        <p class="review-text">«Заказывал Telegram-бота для автоматизации заявок. Работает отлично, клиенты стали оставлять заявки напрямую через мессенджер. Рекомендую.»</p>
+        <div class="review-author">
+          <div class="review-photo">М</div>
+          <div>
+            <div class="review-name">Мария С.</div>
+            <div class="review-role">Салон красоты</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA / FORM -->
+<section class="cta-section" id="contact">
+  <div class="container">
+    <div class="cta-inner reveal">
+      <div class="cta-left">
+        <h2>Давайте обсудим ваш проект</h2>
+        <p>Расскажите, что нужно вашему бизнесу. Я отвечу в течение нескольких часов и предложу подходящее решение.</p>
+        <div class="cta-contacts">
+          <div class="cta-contact">
+            <div class="cta-contact-icon">✉</div>
+            <span>Telegram: @valevskiy_studio</span>
+          </div>
+          <div class="cta-contact">
+            <div class="cta-contact-icon">📞</div>
+            <span>По запросу</span>
+          </div>
+        </div>
+      </div>
+      <form class="form-group" id="contactForm">
+        <input type="text" placeholder="Ваше имя" required>
+        <input type="text" placeholder="Telegram или телефон" required>
+        <textarea placeholder="Расскажите кратко о вашей задаче"></textarea>
+        <button type="submit" class="btn-primary form-submit">Отправить заявку ↗</button>
+        <div class="form-note">Обычно отвечаю в течение 2–3 часов</div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-copy">© 2026 VALEVSKIY STUDIO. Санкт-Петербург</div>
+    <ul class="footer-links">
+      <li><a href="#services">Услуги</a></li>
+      <li><a href="#cases">Кейсы</a></li>
+      <li><a href="#contact">Связаться</a></li>
+    </ul>
+  </div>
+</footer>
+
+<script>
+// Burger menu
+const burger = document.getElementById('burger');
+const navLinks = document.getElementById('navLinks');
+burger.addEventListener('click', () => navLinks.classList.toggle('open'));
+navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
+
+// Scroll reveal
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+// Smooth scroll
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', e => {
+    e.preventDefault();
+    const target = document.querySelector(anchor.getAttribute('href'));
+    if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+});
+
+// Form handler
+document.getElementById('contactForm').addEventListener('submit', e => {
+  e.preventDefault();
+  const btn = e.target.querySelector('button[type="submit"]');
+  btn.textContent = 'Отправлено ✓';
+  btn.style.opacity = '0.7';
+  btn.disabled = true;
+  setTimeout(() => {
+    btn.textContent = 'Отправить заявку ↗';
+    btn.style.opacity = '1';
+    btn.disabled = false;
+    e.target.reset();
+  }, 3000);
+});
+
+// Nav background on scroll
+const nav = document.querySelector('nav');
+window.addEventListener('scroll', () => {
+  if (window.scrollY > 50) {
+    nav.style.borderBottomColor = 'var(--border)';
+  }
+});
+</script>
