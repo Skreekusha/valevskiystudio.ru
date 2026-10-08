@@ -42,16 +42,17 @@ nav .links a:hover{color:var(--fg)}
 .nav-cta{font-size:12px;font-weight:600;color:var(--bg);background:var(--mint);border:none;border-radius:100px;padding:8px 18px;transition:all .25s;white-space:nowrap;margin-left:auto}
 @media(min-width:768px){.nav-cta{margin-left:0}}
 .nav-cta:hover{opacity:.88;box-shadow:0 0 20px rgba(0,255,170,.3)}
+@media(max-width:767px){nav.main-nav{padding:8px 20px;top:10px}nav .inner{gap:16px}.nav-cta{padding:7px 14px;font-size:11px}}
 
 /* HERO */
 .hero{position:relative;width:100%;height:100vh;height:100svh;min-height:560px;overflow:hidden;background:#000}
 #scene{position:absolute;inset:0;width:100%;height:100%;display:block;cursor:grab;touch-action:pan-y}
 #scene.dragging{cursor:grabbing}
-.hero-ui{position:absolute;inset:0;pointer-events:none;z-index:2;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:100px var(--pad) 40px}
+.hero-ui{position:absolute;inset:0;pointer-events:none;z-index:2;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;padding:100px var(--pad) 40px}
 .hero-ui a,.hero-ui button{pointer-events:auto}
 .hero-top,.hero-bottom{font-size:clamp(2.2rem,7vw,5rem);font-weight:900;letter-spacing:-.04em;text-transform:uppercase;line-height:.9;text-align:center;text-shadow:0 2px 40px rgba(0,0,0,.6)}
-.hero-top{margin-bottom:auto}
-.hero-bottom{margin-top:auto}
+.hero-top{margin-bottom:0}
+.hero-bottom{margin-top:4px}
 .hero-bottom em{font-style:normal;color:var(--mint)}
 .hero-sub{font-size:clamp(14px,1.8vw,17px);color:var(--fg2);text-align:center;max-width:500px;margin-top:16px;text-shadow:0 1px 20px rgba(0,0,0,.8)}
 .hero-cta{display:flex;gap:10px;margin-top:20px;flex-wrap:wrap;justify-content:center}
@@ -62,6 +63,13 @@ nav .links a:hover{color:var(--fg)}
 .btn-ghost:hover{border-color:var(--mint);color:var(--mint)}
 .hero-loader{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--fg3);transition:opacity .6s}
 .hero-loader.done{opacity:0;pointer-events:none}
+@media(max-width:767px){
+.hero-ui{justify-content:flex-end;padding-top:80px;padding-bottom:32px}
+.hero-top,.hero-bottom{font-size:clamp(2rem,8vw,3rem)}
+.hero-sub{font-size:14px;margin-top:12px}
+.hero-cta{margin-top:16px}
+.hero-cta a{padding:14px 20px;font-size:13px;flex:1;text-align:center;min-width:140px}
+}
 
 /* SECTIONS */
 section.s{padding:100px 0;position:relative;z-index:2}
@@ -775,9 +783,9 @@ function layout() {
   const visW = visH * camera.aspect;
   const mobile = W < 768 || W / H < 1;
   const sx = mobile ? 0.5 : 0.517;
-  const sy = mobile ? 0.45 : 0.488;
+  const sy = mobile ? 0.33 : 0.488;
   pivot.position.set((sx - 0.5) * visW, (0.5 - sy) * visH, 0);
-  const px = Math.min(H * 0.44, W * (mobile ? 0.45 : 0.29));
+  const px = Math.min(H * 0.44, W * (mobile ? 0.55 : 0.29));
   const s = (px / H) * visH;
   pivot.scale.set(s, s, s);
 }
