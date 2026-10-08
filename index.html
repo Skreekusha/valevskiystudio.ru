@@ -45,7 +45,7 @@ nav .links a:hover{color:var(--fg)}
 
 /* HERO */
 .hero{position:relative;width:100%;height:100vh;height:100svh;min-height:560px;overflow:hidden;background:#000}
-#scene{position:absolute;inset:0;width:100%;height:100%;display:block;cursor:grab;touch-action:none}
+#scene{position:absolute;inset:0;width:100%;height:100%;display:block;cursor:grab;touch-action:pan-y}
 #scene.dragging{cursor:grabbing}
 .hero-ui{position:absolute;inset:0;pointer-events:none;z-index:2;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:100px var(--pad) 40px}
 .hero-ui a,.hero-ui button{pointer-events:auto}
@@ -502,10 +502,11 @@ const MODEL_URL = 'https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIX
 const canvas = document.getElementById('scene');
 const loaderEl = document.getElementById('loader');
 
-const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: false });
+const isMobile = window.innerWidth < 768 || window.innerWidth / window.innerHeight < 1;
+const renderer = new THREE.WebGLRenderer({ canvas, antialias: !isMobile, alpha: false });
 renderer.setClearColor(0x060605);
 renderer.outputColorSpace = THREE.SRGBColorSpace;
-renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
+renderer.setPixelRatio(Math.min(devicePixelRatio, isMobile ? 1.5 : 2));
 
 const camera = new THREE.PerspectiveCamera(30, 1, 0.1, 100);
 camera.position.z = 10;
@@ -716,7 +717,8 @@ function setCubeGeom(geom) {
   loaderEl.classList.add('done');
 }
 
-// Load model or fallback
+// Load model or fallback (mobile → instant fallback, skip GLB download)
+if (isMobile) { fallback(); } else {
 const loader = new GLTFLoader();
 loader.load(MODEL_URL, gltf => {
   const geos = [];
@@ -742,6 +744,7 @@ loader.load(MODEL_URL, gltf => {
   merged.scale(1/maxDim, 1/maxDim, 1/maxDim);
   setCubeGeom(merged);
 }, undefined, () => fallback());
+} // end if !isMobile
 
 function fallback() {
   const g = new RoundedBoxGeometry(1, 1, 1, 8, 0.12);
@@ -786,13 +789,14 @@ const IDLE_SPEED_Y = 0.0035, IDLE_SPEED_X = 0.0012;
 const DAMP = 0.94;
 
 canvas.addEventListener('pointerdown', e => {
+  if (isMobile) return; // на мобилке не перехватываем — пусть скроллит
   dragging = true; canvas.classList.add('dragging');
   canvas.setPointerCapture(e.pointerId);
   lastPtr = { x: e.clientX, y: e.clientY }; lastTime = performance.now();
   vel.x = vel.y = 0; idleBlend = 0; idleSince = 0;
 });
 canvas.addEventListener('pointermove', e => {
-  if (!dragging || !lastPtr) return;
+  if (isMobile || !dragging || !lastPtr) return;
   const dx = (e.clientX - lastPtr.x) * 0.008;
   const dy = (e.clientY - lastPtr.y) * 0.008;
   const now = performance.now();
@@ -844,7 +848,7 @@ function tick(time) {
   // Animate background text
   bgScrollTime += dt;
   bgFrameSkip++;
-  if (bgFrameSkip >= 2) {
+  if (bgFrameSkip >= (isMobile ? 4 : 2)) {
     bgFrameSkip = 0;
     drawBgText(bgScrollTime);
   }
