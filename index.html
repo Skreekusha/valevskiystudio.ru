@@ -64,9 +64,9 @@ nav .links a:hover{color:var(--fg)}
 .hero-loader{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--fg3);transition:opacity .6s}
 .hero-loader.done{opacity:0;pointer-events:none}
 @media(max-width:767px){
-.hero-ui{justify-content:flex-end;padding-top:80px;padding-bottom:48px}
-.hero-top,.hero-bottom{font-size:clamp(1.6rem,7vw,2.6rem)}
-.hero-sub{font-size:13px;margin-top:10px;padding:0 8px}
+.hero-ui{justify-content:flex-end;padding-top:80px;padding-bottom:40px}
+.hero-top,.hero-bottom{font-size:clamp(1.5rem,6.5vw,2.4rem)}
+.hero-sub{font-size:13px;margin-top:10px;padding:0 12px}
 .hero-cta{margin-top:14px}
 .hero-cta a{padding:11px 24px;font-size:13px;text-align:center}
 }
@@ -546,8 +546,8 @@ const bgMat = new THREE.ShaderMaterial({
 }`,
   depthTest: false, depthWrite: false
 });
-bgMat.frustumCulled = false;
 const bgQuad = new THREE.Mesh(new THREE.PlaneGeometry(2, 2), bgMat);
+bgQuad.frustumCulled = false;
 bgScene.add(bgQuad);
 
 const phrases = ['VALEVSKIY STUDIO','DIGITAL','АНАЛИТИКА','САЙТЫ','TELEGRAM','MINI APP','БОТЫ','РЕШЕНИЯ'];
@@ -557,7 +557,7 @@ let bgFrameSkip = 0;
 
 function drawBgText(scrollT) {
   const W = canvas.clientWidth, H = canvas.clientHeight;
-  const dpr = Math.min(devicePixelRatio, 2);
+  const dpr = renderer.getPixelRatio();
   textCanvas.width = W * dpr;
   textCanvas.height = H * dpr;
   const c = ctx;
@@ -770,13 +770,16 @@ function fallback() {
 // Layout
 function layout() {
   const W = canvas.clientWidth, H = canvas.clientHeight;
-  const dpr = Math.min(devicePixelRatio, 2);
   renderer.setSize(W, H, false);
-  canvas.width = W * dpr; canvas.height = H * dpr;
+  // DO NOT override canvas.width/height — renderer.setSize already
+  // sets them using its own pixelRatio. Overriding with a different
+  // dpr makes the GL viewport cover only part of the canvas (the bug
+  // that left the top ~25 % of mobile screens blank).
   camera.aspect = W / H;
   camera.updateProjectionMatrix();
 
-  const rw = W * dpr, rh = H * dpr;
+  const pr = renderer.getPixelRatio();
+  const rw = Math.round(W * pr), rh = Math.round(H * pr);
   if (rtBack) { rtBack.dispose(); rtFront.dispose(); }
   makeRT(rw, rh);
   const res = new THREE.Vector2(rw, rh);
@@ -791,9 +794,10 @@ function layout() {
   const visW = visH * camera.aspect;
   const mobile = W < 768 || W / H < 1;
   const sx = mobile ? 0.5 : 0.517;
-  const sy = mobile ? 0.36 : 0.488;
+  // sy 0.5 = geometric centre; nudge up slightly for nav bar
+  const sy = mobile ? 0.46 : 0.488;
   pivot.position.set((sx - 0.5) * visW, (0.5 - sy) * visH, 0);
-  const px = Math.min(H * 0.44, W * (mobile ? 0.38 : 0.29));
+  const px = Math.min(H * 0.44, W * (mobile ? 0.36 : 0.29));
   const s = (px / H) * visH;
   pivot.scale.set(s, s, s);
 }
