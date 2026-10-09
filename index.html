@@ -64,11 +64,11 @@ nav .links a:hover{color:var(--fg)}
 .hero-loader{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--fg3);transition:opacity .6s}
 .hero-loader.done{opacity:0;pointer-events:none}
 @media(max-width:767px){
-.hero-ui{justify-content:flex-end;padding-top:80px;padding-bottom:40px}
-.hero-top,.hero-bottom{font-size:clamp(2rem,8vw,3rem)}
-.hero-sub{font-size:14px;margin-top:12px}
-.hero-cta{margin-top:16px}
-.hero-cta a{padding:14px 20px;font-size:13px;flex:1;text-align:center;min-width:140px}
+.hero-ui{justify-content:flex-end;padding-top:80px;padding-bottom:48px}
+.hero-top,.hero-bottom{font-size:clamp(1.6rem,7vw,2.6rem)}
+.hero-sub{font-size:13px;margin-top:10px;padding:0 8px}
+.hero-cta{margin-top:14px}
+.hero-cta a{padding:11px 24px;font-size:13px;text-align:center}
 }
 
 /* SECTIONS */
@@ -566,11 +566,11 @@ function drawBgText(scrollT) {
   c.fillRect(0, 0, W, H);
 
   const mobile = W < 768 || W / H < 1;
-  const fs = Math.min(H * 0.06, W * (mobile ? 0.07 : 0.04));
+  const fs = mobile ? Math.min(H * 0.05, W * 0.11) : Math.min(H * 0.06, W * 0.04);
   c.font = `900 ${fs}px Inter, sans-serif`;
   c.textAlign = 'left';
   c.textBaseline = 'top';
-  c.fillStyle = 'rgba(229,230,230,0.08)';
+  c.fillStyle = mobile ? 'rgba(229,230,230,0.10)' : 'rgba(229,230,230,0.08)';
 
   const lineH = fs * 1.4;
   const rows = Math.ceil(H / lineH) + 2;
@@ -791,9 +791,9 @@ function layout() {
   const visW = visH * camera.aspect;
   const mobile = W < 768 || W / H < 1;
   const sx = mobile ? 0.5 : 0.517;
-  const sy = mobile ? 0.44 : 0.488;
+  const sy = mobile ? 0.5 : 0.488;
   pivot.position.set((sx - 0.5) * visW, (0.5 - sy) * visH, 0);
-  const px = Math.min(H * 0.44, W * (mobile ? 0.48 : 0.29));
+  const px = Math.min(H * 0.44, W * (mobile ? 0.42 : 0.29));
   const s = (px / H) * visH;
   pivot.scale.set(s, s, s);
 }
