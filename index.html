@@ -104,7 +104,7 @@ section.s{padding:100px 0;position:relative;z-index:2}
 
 /* SERVICES */
 .services-grid{margin-top:48px;display:grid;gap:12px}
-@media(min-width:900px){.services-grid{grid-template-columns:repeat(3,1fr)}}
+@media(min-width:900px){.services-grid{grid-template-columns:repeat(2,1fr)}}@media(min-width:1200px){.services-grid{grid-template-columns:repeat(4,1fr)}}
 .service{padding:32px 28px;display:flex;flex-direction:column;position:relative}
 .service.featured{border-color:rgba(0,255,170,.35);background:linear-gradient(165deg,rgba(0,255,170,.06),rgba(16,17,17,.95) 60%);box-shadow:0 0 60px rgba(0,255,170,.08)}
 .service .tag{font-size:11px;font-weight:600;color:var(--mint);letter-spacing:.15em;text-transform:uppercase}
@@ -284,7 +284,7 @@ footer a:hover{color:var(--fg)}
     <div class="wrap">
       <div class="reveal">
         <p class="slabel">Услуги</p>
-        <h2 class="stitle">Три формата <span>работы.</span></h2>
+        <h2 class="stitle">Форматы <span>работы.</span></h2>
       </div>
       <div class="services-grid">
         <div class="glass service reveal">
@@ -310,8 +310,16 @@ footer a:hover{color:var(--fg)}
           <h3>Полный пакет</h3>
           <div><span class="price">от 80 000 ₽</span></div>
           <p>Аудит + сайт + Telegram-бот + аналитика + стратегия продвижения.</p>
-          <ul><li>Всё из пакета «Разработка»</li><li>Telegram-бот для заявок</li><li>Стратегия продвижения</li><li>Сопровождение</li></ul>
+          <ul><li>Всё из пакета «Разработка»</li><li>Telegram-бот для заявок</li><li>Стратегия продвижения</li><li>Интеграция нейросети в ваш продукт</li><li>Сопровождение</li></ul>
           <a href="https://t.me/valevskiy_studio" target="_blank" class="cta-link">Обсудить пакет →</a>
+        </div>
+        <div class="glass service reveal">
+          <span class="tag">AI</span>
+          <h3>Нейросеть для бизнеса</h3>
+          <div><span class="price">от 50 000 ₽</span></div>
+          <p>Встроим AI-ассистента в ваше приложение или бот. Обучим на ваших данных.</p>
+          <ul><li>AI-чатбот для поддержки клиентов</li><li>Обучение на базе знаний компании</li><li>Интеграция в сайт или Telegram</li><li>Автоматизация рутинных ответов</li><li>Срок: от 14 дней</li></ul>
+          <a href="https://t.me/valevskiy_studio" target="_blank" class="cta-link">Обсудить AI →</a>
         </div>
       </div>
     </div>
