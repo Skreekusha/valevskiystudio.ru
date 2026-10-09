@@ -64,7 +64,7 @@ nav .links a:hover{color:var(--fg)}
 .hero-loader{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--fg3);transition:opacity .6s}
 .hero-loader.done{opacity:0;pointer-events:none}
 @media(max-width:767px){
-.hero-ui{justify-content:flex-end;padding-top:80px;padding-bottom:32px}
+.hero-ui{justify-content:flex-end;padding-top:80px;padding-bottom:40px}
 .hero-top,.hero-bottom{font-size:clamp(2rem,8vw,3rem)}
 .hero-sub{font-size:14px;margin-top:12px}
 .hero-cta{margin-top:16px}
@@ -791,9 +791,9 @@ function layout() {
   const visW = visH * camera.aspect;
   const mobile = W < 768 || W / H < 1;
   const sx = mobile ? 0.5 : 0.517;
-  const sy = mobile ? 0.33 : 0.488;
+  const sy = mobile ? 0.44 : 0.488;
   pivot.position.set((sx - 0.5) * visW, (0.5 - sy) * visH, 0);
-  const px = Math.min(H * 0.44, W * (mobile ? 0.55 : 0.29));
+  const px = Math.min(H * 0.44, W * (mobile ? 0.48 : 0.29));
   const s = (px / H) * visH;
   pivot.scale.set(s, s, s);
 }
