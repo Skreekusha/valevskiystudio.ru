@@ -234,8 +234,19 @@ section.s{padding:100px 0;position:relative;z-index:2}
 .contact-card button:hover{opacity:.9}
 
 /* FOOTER */
+.contact-direct{margin-top:30px;display:flex;flex-direction:column;gap:14px}
+.contact-direct .row{display:flex;flex-direction:column;gap:3px}
+.contact-direct .lbl{font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;
+  color:rgba(6,6,5,.45)}
+.contact-direct a{font-size:19px;font-weight:800;color:var(--bg);align-self:flex-start;
+  border-bottom:1px solid rgba(6,6,5,.28);transition:border-color .2s;letter-spacing:-.01em}
+.contact-direct a:hover{border-color:var(--bg)}
+.contact-direct sup{font-size:11px;font-weight:700;vertical-align:super;line-height:0}
+.legal{font-size:12px;line-height:1.55;color:var(--fg3);max-width:760px}
+.contact-card .legal{color:rgba(6,6,5,.42);margin-top:18px}
 footer{padding:32px 0;font-size:13px;color:var(--fg3);position:relative;z-index:2}
-footer .inner{display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px}
+footer .inner{display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px;align-items:center}
+footer .legal{margin-top:22px;padding-top:20px;border-top:1px solid rgba(255,255,255,.06)}
 footer a{transition:color .2s}
 footer a:hover{color:var(--fg)}
 
@@ -732,6 +743,21 @@ footer a:hover{color:var(--fg)}
           <div>
             <h2>Расскажите, что нужно бизнесу.</h2>
             <p>Оставьте контакт и коротко опишите задачу. Я изучу ситуацию и пришлю предложение с конкретными шагами.</p>
+            <div class="contact-direct">
+              <div class="row">
+                <span class="lbl">Телефон</span>
+                <a href="tel:+79182881321">+7 918 288-13-21</a>
+              </div>
+              <div class="row">
+                <span class="lbl">Telegram</span>
+                <a href="https://t.me/valevskiy_studio" target="_blank" rel="noopener">@valevskiy_studio</a>
+              </div>
+              <div class="row">
+                <span class="lbl">Instagram<sup>*</sup></span>
+                <a href="https://www.instagram.com/valevskiystudio/" target="_blank" rel="noopener">@valevskiystudio</a>
+              </div>
+            </div>
+            <p class="legal">* Instagram принадлежит компании Meta, которая признана в России экстремистской организацией. Её деятельность на территории РФ запрещена.</p>
           </div>
           <div>
             <form id="contactForm" onsubmit="submitForm(event)">
@@ -753,12 +779,15 @@ footer a:hover{color:var(--fg)}
     <div class="wrap">
       <div class="inner">
         <span>&copy; 2026 VALEVSKIY STUDIO</span>
-        <div style="display:flex;gap:20px">
+        <div style="display:flex;gap:20px;flex-wrap:wrap">
           <a href="#services">Услуги</a>
-          <a href="#cases">Кейсы</a>
-          <a href="https://t.me/valevskiy_studio" target="_blank">Telegram</a>
+          <a href="#works">Примеры</a>
+          <a href="tel:+79182881321">+7 918 288-13-21</a>
+          <a href="https://t.me/valevskiy_studio" target="_blank" rel="noopener">Telegram</a>
+          <a href="https://www.instagram.com/valevskiystudio/" target="_blank" rel="noopener">Instagram*</a>
         </div>
       </div>
+      <p class="legal">* Instagram принадлежит компании Meta, которая признана в России экстремистской организацией. Её деятельность на территории РФ запрещена.</p>
     </div>
   </footer>
 
