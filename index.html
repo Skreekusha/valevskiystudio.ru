@@ -46,9 +46,32 @@ nav .links a:hover{color:var(--fg)}
 
 /* HERO */
 .hero{position:relative;width:100%;height:100vh;height:100svh;min-height:560px;overflow:hidden;background:#000}
-#scene{position:absolute;inset:0;width:100%;height:100%;display:block;cursor:grab;touch-action:pan-y}
+#scene{position:absolute;inset:0;width:100%;height:100%;display:block;cursor:grab;touch-action:pan-y;z-index:2}
 #scene.dragging{cursor:grabbing}
-.hero-ui{position:absolute;inset:0;pointer-events:none;z-index:2;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;padding:100px var(--pad) 40px}
+.wall{position:absolute;inset:-22%;display:flex;gap:22px;justify-content:center;
+  transform:rotate(-8deg) scale(1.04);transform-origin:50% 50%;z-index:0;pointer-events:none}
+.col{display:flex;flex-direction:column;gap:22px;width:318px;flex:0 0 318px;
+  animation:rollUp var(--sp) linear infinite both}
+.col.down{animation-name:rollDown}
+@keyframes rollUp{from{transform:translateY(0)}to{transform:translateY(-50%)}}
+@keyframes rollDown{from{transform:translateY(-50%)}to{transform:translateY(0)}}
+.tile{border-radius:16px;overflow:hidden;background:#0C0D0D;border:1px solid rgba(255,255,255,.07);
+  box-shadow:0 30px 70px rgba(0,0,0,.6);flex:0 0 auto}
+.tile img{width:100%;aspect-ratio:16/10;object-fit:cover;object-position:top center;display:block;
+  filter:saturate(.62) brightness(.48)}
+.tile.tall img{aspect-ratio:9/14}
+.scrim{position:absolute;inset:0;z-index:1;pointer-events:none;
+  background:
+    radial-gradient(ellipse 88% 56% at 50% 50%,rgba(6,6,5,.94) 16%,rgba(6,6,5,.66) 58%,rgba(6,6,5,.3) 88%),
+    linear-gradient(to bottom,rgba(6,6,5,.95) 0%,rgba(6,6,5,.6) 24%,rgba(6,6,5,.72) 58%,rgba(6,6,5,1) 100%)}
+.hero-cpt{position:absolute;left:0;right:0;bottom:16px;z-index:4;text-align:center;font-size:11px;
+  letter-spacing:.14em;text-transform:uppercase;color:rgba(229,230,230,.26)}
+@media(max-width:767px){
+  .wall{inset:-26%;gap:14px;transform:rotate(-8deg) scale(1.02)}
+  .col{width:196px;flex:0 0 196px;gap:14px}
+  .tile img{filter:saturate(.6) brightness(.42)}
+}
+.hero-ui{position:absolute;inset:0;pointer-events:none;z-index:3;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;padding:100px var(--pad) 40px}
 .hero-ui a,.hero-ui button{pointer-events:auto}
 .hero-top,.hero-bottom{font-size:clamp(2.2rem,7vw,5rem);font-weight:900;letter-spacing:-.04em;text-transform:uppercase;line-height:.9;text-align:center;text-shadow:0 2px 40px rgba(0,0,0,.6)}
 .hero-top{margin-bottom:0}
@@ -239,6 +262,45 @@ footer a:hover{color:var(--fg)}
 
   <!-- HERO -->
   <section class="hero">
+    <div class="wall">
+      <div class="col " style="--sp:78s">
+        <div class="tile"><img src="img/works/urist_d.webp" alt="" loading="eager"/></div>
+        <div class="tile"><img src="img/works/kofe_d.webp" alt="" loading="eager"/></div>
+        <div class="tile"><img src="img/works/remont_d.webp" alt="" loading="eager"/></div>
+        <div class="tile"><img src="img/works/magazin_d.webp" alt="" loading="eager"/></div>
+        <div class="tile"><img src="img/works/doma_d.webp" alt="" loading="eager"/></div>
+        <div class="tile"><img src="img/works/urist_d.webp" alt="" loading="eager"/></div>
+        <div class="tile"><img src="img/works/kofe_d.webp" alt="" loading="eager"/></div>
+        <div class="tile"><img src="img/works/remont_d.webp" alt="" loading="eager"/></div>
+        <div class="tile"><img src="img/works/magazin_d.webp" alt="" loading="eager"/></div>
+        <div class="tile"><img src="img/works/doma_d.webp" alt="" loading="eager"/></div>
+      </div>
+      <div class="col down" style="--sp:94s">
+        <div class="tile"><img src="img/works/puls_d.webp" alt="" loading="eager"/></div>
+        <div class="tile"><img src="img/works/klining_d.webp" alt="" loading="eager"/></div>
+        <div class="tile tall"><img src="img/works/doma_m.webp" alt="" loading="eager"/></div>
+        <div class="tile"><img src="img/works/remont_d.webp" alt="" loading="eager"/></div>
+        <div class="tile"><img src="img/works/kofe_d.webp" alt="" loading="eager"/></div>
+        <div class="tile"><img src="img/works/puls_d.webp" alt="" loading="eager"/></div>
+        <div class="tile"><img src="img/works/klining_d.webp" alt="" loading="eager"/></div>
+        <div class="tile tall"><img src="img/works/doma_m.webp" alt="" loading="eager"/></div>
+        <div class="tile"><img src="img/works/remont_d.webp" alt="" loading="eager"/></div>
+        <div class="tile"><img src="img/works/kofe_d.webp" alt="" loading="eager"/></div>
+      </div>
+      <div class="col " style="--sp:68s">
+        <div class="tile"><img src="img/works/magazin_d.webp" alt="" loading="eager"/></div>
+        <div class="tile"><img src="img/works/urist_d.webp" alt="" loading="eager"/></div>
+        <div class="tile tall"><img src="img/works/klining_m.webp" alt="" loading="eager"/></div>
+        <div class="tile"><img src="img/works/puls_d.webp" alt="" loading="eager"/></div>
+        <div class="tile"><img src="img/works/doma_d.webp" alt="" loading="eager"/></div>
+        <div class="tile"><img src="img/works/magazin_d.webp" alt="" loading="eager"/></div>
+        <div class="tile"><img src="img/works/urist_d.webp" alt="" loading="eager"/></div>
+        <div class="tile tall"><img src="img/works/klining_m.webp" alt="" loading="eager"/></div>
+        <div class="tile"><img src="img/works/puls_d.webp" alt="" loading="eager"/></div>
+        <div class="tile"><img src="img/works/doma_d.webp" alt="" loading="eager"/></div>
+      </div>
+    </div>
+    <div class="scrim"></div>
     <canvas id="scene" aria-label="3D стеклянный куб"></canvas>
     <div class="hero-ui">
       <h1 class="hero-top">Изучаю рынок</h1>
@@ -246,10 +308,11 @@ footer a:hover{color:var(--fg)}
       <p class="hero-sub">Сайты, Telegram-боты и Mini Apps для малого бизнеса на основе анализа конкурентов и поведения клиентов.</p>
       <div class="hero-cta">
         <a href="https://t.me/valevskiy_studio" target="_blank" class="btn-mint">Обсудить проект</a>
-        <a href="#cases" class="btn-ghost">Смотреть проекты</a>
+        <a href="#works" class="btn-ghost">Смотреть примеры</a>
       </div>
       <div class="hero-loader" id="loader">Loading</div>
     </div>
+    <div class="hero-cpt">На фоне концепты студии</div>
   </section>
 
   <!-- PROCESS -->
@@ -678,8 +741,8 @@ const canvas = document.getElementById('scene');
 const loaderEl = document.getElementById('loader');
 
 const isMobile = window.innerWidth < 768 || window.innerWidth / window.innerHeight < 1;
-const renderer = new THREE.WebGLRenderer({ canvas, antialias: !isMobile, alpha: false });
-renderer.setClearColor(0x060605);
+const renderer = new THREE.WebGLRenderer({ canvas, antialias: !isMobile, alpha: true });
+renderer.setClearColor(0x000000, 0);
 renderer.outputColorSpace = THREE.SRGBColorSpace;
 renderer.setPixelRatio(Math.min(devicePixelRatio, isMobile ? 1.5 : 2));
 
@@ -703,7 +766,7 @@ const bgMat = new THREE.ShaderMaterial({
   fragmentShader: `uniform sampler2D uTex; varying vec2 vUv; void main(){ gl_FragColor = texture2D(uTex, vUv);
 #include <colorspace_fragment>
 }`,
-  depthTest: false, depthWrite: false
+  depthTest: false, depthWrite: false, transparent: true
 });
 const bgQuad = new THREE.Mesh(new THREE.PlaneGeometry(2, 2), bgMat);
 bgQuad.frustumCulled = false;
@@ -721,15 +784,14 @@ function drawBgText(scrollT) {
   textCanvas.height = H * dpr;
   const c = ctx;
   c.scale(dpr, dpr);
-  c.fillStyle = '#060605';
-  c.fillRect(0, 0, W, H);
+  c.clearRect(0, 0, W, H);
 
   const mobile = W < 768 || W / H < 1;
   const fs = mobile ? Math.min(H * 0.045, W * 0.105) : Math.min(H * 0.06, W * 0.04);
   c.font = `900 ${fs}px Inter, sans-serif`;
   c.textAlign = 'left';
   c.textBaseline = 'top';
-  c.fillStyle = mobile ? 'rgba(229,230,230,0.12)' : 'rgba(229,230,230,0.08)';
+  c.fillStyle = mobile ? 'rgba(229,230,230,0.09)' : 'rgba(229,230,230,0.06)';
 
   const lineH = fs * 1.3;
   const rows = Math.ceil(H / lineH) + 6;
