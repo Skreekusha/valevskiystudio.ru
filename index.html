@@ -130,6 +130,31 @@ section.s{padding:100px 0;position:relative;z-index:2}
 .case-stats strong{display:block;font-size:20px;font-weight:800;color:var(--mint);line-height:1.1}
 .case-stats span{font-size:10px;color:var(--fg3);line-height:1.3;display:block;margin-top:4px}
 
+/* WORKS */
+.works-note{margin-top:20px;font-size:14px;color:var(--fg3);max-width:640px;line-height:1.65}
+.works-grid{margin-top:40px;display:grid;gap:12px}
+@media(min-width:720px){.works-grid{grid-template-columns:repeat(2,1fr)}}
+@media(min-width:1100px){.works-grid{grid-template-columns:repeat(3,1fr)}}
+.work{padding:14px;display:flex;flex-direction:column;overflow:hidden}
+.work .shot{position:relative;border-radius:14px;overflow:hidden;aspect-ratio:16/11;background:#0b0c0c;min-width:0}
+.work .shot img.d{width:100%;height:100%;object-fit:cover;object-position:top center}
+.work .shot img.m{position:absolute;right:14px;bottom:0;width:23%;aspect-ratio:.46;height:auto;object-fit:cover;object-position:top center;border:1px solid rgba(255,255,255,.22);border-bottom:none;border-radius:9px 9px 0 0;box-shadow:-12px 12px 34px rgba(0,0,0,.6)}
+.work .concept{position:absolute;left:12px;top:12px;z-index:2;font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--fg2);background:rgba(6,6,5,.72);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.14);border-radius:100px;padding:5px 12px}
+.work .meta{padding:22px 10px 8px;min-width:0}
+.work .w-tag{font-size:11px;font-weight:600;color:var(--mint);letter-spacing:.15em;text-transform:uppercase}
+.work h3{font-size:21px;font-weight:700;margin:10px 0 8px;letter-spacing:-.01em}
+.work p{font-size:14px;color:var(--fg2);line-height:1.6}
+.work-cta{justify-content:center;border-color:rgba(0,255,170,.28);background:linear-gradient(165deg,rgba(0,255,170,.07),rgba(16,17,17,.95) 65%);min-height:300px}
+.work-cta .cta-in{padding:32px 20px}
+.work-cta .cta-link{display:inline-block;margin-top:20px;font-size:14px;font-weight:600;color:var(--mint)}
+.works-sub{margin-top:64px;font-size:12px;font-weight:600;color:var(--mint);letter-spacing:.2em;text-transform:uppercase}
+.tg-grid{margin-top:20px;display:grid;gap:12px;grid-template-columns:repeat(2,1fr)}
+@media(min-width:900px){.tg-grid{grid-template-columns:repeat(4,1fr)}}
+.tg-card{padding:16px 16px 20px}
+.tg-card .frame{border-radius:12px;overflow:hidden;background:#0b0c0c;aspect-ratio:.56;display:flex;align-items:flex-start;justify-content:center}
+.tg-card .frame img{width:100%;height:100%;object-fit:contain}
+.tg-card .cap{font-size:13px;color:var(--fg2);line-height:1.5;margin-top:14px}
+
 /* DELIVERABLES */
 .deliverables-grid{margin-top:48px;display:grid;gap:12px;grid-template-columns:repeat(2,1fr)}
 @media(min-width:768px){.deliverables-grid{grid-template-columns:repeat(3,1fr)}}
@@ -203,6 +228,7 @@ footer a:hover{color:var(--fg)}
         <a href="#process">Процесс</a>
         <a href="#services">Услуги</a>
         <a href="#cases">Проекты</a>
+        <a href="#works">Примеры</a>
         <a href="#faq">FAQ</a>
       </div>
       <a href="https://t.me/valevskiy_studio" target="_blank" class="nav-cta">Обсудить проект</a>
@@ -362,6 +388,139 @@ footer a:hover{color:var(--fg)}
             <div><strong>14</strong><span>дней до запуска</span></div>
             <div><strong>2</strong><span>продукта: сайт + бот</span></div>
           </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WORKS -->
+  <section class="s" id="works" style="padding-top:0">
+    <div class="wrap">
+      <div class="reveal">
+        <p class="slabel">Примеры работ</p>
+        <h2 class="stitle">Как выглядит <span>результат.</span></h2>
+        <p class="works-note">Это концепты, которые я собираю под типовые задачи малого бизнеса, а не выполненные клиентские проекты. Они показывают подход: что выносится на первый экран, как объясняется цена и где стоит форма заявки. Реальные проекты студии находятся выше.</p>
+      </div>
+
+      <div class="works-grid">
+        <div class="glass work reveal">
+          <div class="shot">
+            <span class="concept">Концепт</span>
+            <img class="d" src="img/works/urist_d.webp" alt="Концепт сайта юридической компании, десктоп" loading="lazy" width="1100" height="688"/>
+            <img class="m" src="img/works/urist_m.webp" alt="Тот же концепт в мобильной версии" loading="lazy"/>
+          </div>
+          <div class="meta">
+            <span class="w-tag">Юридические услуги</span>
+            <h3>Ориентир</h3>
+            <p>Первый экран снимает главный страх клиента: работа по договору с гарантией сроков и конфиденциальности. Ниже практики разложены по направлениям, чтобы человек сразу нашёл свою ситуацию.</p>
+          </div>
+        </div>
+
+        <div class="glass work reveal">
+          <div class="shot">
+            <span class="concept">Концепт</span>
+            <img class="d" src="img/works/doma_d.webp" alt="Концепт сайта строительной компании, десктоп" loading="lazy" width="770" height="654"/>
+            <img class="m" src="img/works/doma_m.webp" alt="Тот же концепт в мобильной версии" loading="lazy"/>
+          </div>
+          <div class="meta">
+            <span class="w-tag">Строительство домов</span>
+            <h3>Подлесок</h3>
+            <p>Дорогую услугу продаёт наглядность. Сразу под первым экраном идут готовые проекты с площадью, сроком и ценой, поэтому посетитель понимает бюджет ещё до звонка.</p>
+          </div>
+        </div>
+
+        <div class="glass work reveal">
+          <div class="shot">
+            <span class="concept">Концепт</span>
+            <img class="d" src="img/works/remont_d.webp" alt="Концепт сайта компании по ремонту квартир, десктоп" loading="lazy" width="807" height="671"/>
+            <img class="m" src="img/works/remont_m.webp" alt="Тот же концепт в мобильной версии" loading="lazy"/>
+          </div>
+          <div class="meta">
+            <span class="w-tag">Ремонт квартир</span>
+            <h3>Мера</h3>
+            <p>Акцент сделан на недоверии к подрядчику. Под первым экраном стоят опыт, гарантия и схема поэтапной оплаты, а дальше идёт галерея сданных объектов.</p>
+          </div>
+        </div>
+
+        <div class="glass work reveal">
+          <div class="shot">
+            <span class="concept">Концепт</span>
+            <img class="d" src="img/works/kofe_d.webp" alt="Концепт сайта кофейни, десктоп" loading="lazy" width="787" height="615"/>
+            <img class="m" src="img/works/kofe_m.webp" alt="Тот же концепт в мобильной версии" loading="lazy"/>
+          </div>
+          <div class="meta">
+            <span class="w-tag">Кофейня</span>
+            <h3>Зерно и пар</h3>
+            <p>Два сценария разведены с первого экрана: зайти в заведение или заказать обжарку домой. Популярные позиции с ценами стоят сразу под шапкой.</p>
+          </div>
+        </div>
+
+        <div class="glass work reveal">
+          <div class="shot">
+            <span class="concept">Концепт</span>
+            <img class="d" src="img/works/puls_d.webp" alt="Концепт сайта фитнес-студии, десктоп" loading="lazy" width="1100" height="688"/>
+            <img class="m" src="img/works/puls_m.webp" alt="Тот же концепт в мобильной версии" loading="lazy"/>
+          </div>
+          <div class="meta">
+            <span class="w-tag">Фитнес-студия</span>
+            <h3>Пульс</h3>
+            <p>Решение здесь принимается по цене абонемента, поэтому тарифы подняты на первый экран. Кнопка записи повторяется в шапке и в блоке с абонементами.</p>
+          </div>
+        </div>
+
+        <div class="glass work reveal">
+          <div class="shot">
+            <span class="concept">Концепт</span>
+            <img class="d" src="img/works/magazin_d.webp" alt="Концепт интернет-магазина товаров для кухни, десктоп" loading="lazy" width="783" height="705"/>
+            <img class="m" src="img/works/magazin_m.webp" alt="Тот же концепт в мобильной версии" loading="lazy"/>
+          </div>
+          <div class="meta">
+            <span class="w-tag">Интернет-магазин</span>
+            <h3>Круг</h3>
+            <p>Витрина построена вокруг поиска и каталога. В карточке товара видно старую и новую цену, поэтому скидка читается без дополнительных пояснений.</p>
+          </div>
+        </div>
+
+        <div class="glass work reveal">
+          <div class="shot">
+            <span class="concept">Концепт</span>
+            <img class="d" src="img/works/klining_d.webp" alt="Концепт сайта клининговой компании, десктоп" loading="lazy" width="766" height="716"/>
+            <img class="m" src="img/works/klining_m.webp" alt="Тот же концепт в мобильной версии" loading="lazy"/>
+          </div>
+          <div class="meta">
+            <span class="w-tag">Клининг</span>
+            <h3>Светло</h3>
+            <p>Заявка собирается прямо на первом экране через калькулятор из трёх полей. Цены на услуги открыты, поэтому до звонка доходят уже подготовленные клиенты.</p>
+          </div>
+        </div>
+
+        <a href="https://t.me/valevskiy_studio" target="_blank" class="glass work work-cta reveal">
+          <div class="cta-in">
+            <span class="w-tag">Ваша ниша</span>
+            <h3>Не нашли свою сферу?</h3>
+            <p>Напишите, чем занимается ваш бизнес. Я разберу сайты ваших конкурентов и покажу, как первый экран может выглядеть у вас.</p>
+            <span class="cta-link">Написать в Telegram →</span>
+          </div>
+        </a>
+      </div>
+
+      <p class="works-sub reveal">Telegram-боты и Mini App</p>
+      <div class="tg-grid">
+        <div class="glass tg-card reveal">
+          <div class="frame"><img src="img/works/tg_zapis.webp" alt="Экран Telegram-бота: выбор услуги и времени" loading="lazy"/></div>
+          <p class="cap">Бот записи: выбор услуги и свободного времени</p>
+        </div>
+        <div class="glass tg-card reveal">
+          <div class="frame"><img src="img/works/tg_confirm.webp" alt="Экран Telegram-бота: подтверждение записи" loading="lazy"/></div>
+          <p class="cap">Бот записи: подтверждение и напоминание клиенту</p>
+        </div>
+        <div class="glass tg-card reveal">
+          <div class="frame"><img src="img/works/tg_catalog.webp" alt="Экран Telegram Mini App: каталог товаров" loading="lazy"/></div>
+          <p class="cap">Mini App: каталог товаров внутри Telegram</p>
+        </div>
+        <div class="glass tg-card reveal">
+          <div class="frame"><img src="img/works/tg_cart.webp" alt="Экран Telegram Mini App: корзина и оформление заказа" loading="lazy"/></div>
+          <p class="cap">Mini App: корзина и оформление заказа</p>
         </div>
       </div>
     </div>
