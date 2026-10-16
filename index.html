@@ -59,8 +59,13 @@ nav .links{display:none;gap:20px;font-size:13px;color:var(--fg3);margin-left:aut
 nav .links a{transition:color .2s}
 nav .links a:hover{color:var(--fg)}
 @media(min-width:768px){nav .links{display:flex}}
-.nav-cta{font-size:12px;font-weight:600;color:var(--bg);background:var(--mint);border:none;border-radius:100px;padding:8px 18px;transition:all .25s;white-space:nowrap;margin-left:auto}
-@media(min-width:768px){.nav-cta{margin-left:0}}
+.nav-cta{font-size:12px;font-weight:600;color:var(--bg);background:var(--mint);border:none;border-radius:100px;padding:8px 18px;transition:all .25s;white-space:nowrap;margin-left:0}
+.nav-tel{display:flex;align-items:center;gap:7px;font-size:13px;font-weight:700;white-space:nowrap;
+  transition:color .2s;margin-left:auto}
+@media(min-width:768px){.nav-tel{margin-left:0}}
+.nav-tel:hover{color:var(--mint)}
+.nav-tel svg{width:15px;height:15px;flex:none;stroke:var(--mint);fill:none;stroke-width:1.9}
+@media(max-width:767px){.nav-tel span{display:none}.nav-tel{padding:4px}}
 .nav-cta:hover{opacity:.88;box-shadow:0 0 20px rgba(0,255,170,.3)}
 @media(max-width:767px){nav.main-nav{padding:8px 20px;top:10px}nav .inner{gap:16px}.nav-cta{padding:7px 14px;font-size:11px}}
 
@@ -166,6 +171,14 @@ section.s{padding:100px 0;position:relative;z-index:2}
 .service .cta-link:hover{opacity:.7}
 .badge-pop{position:absolute;top:20px;right:20px;font-size:11px;font-weight:700;background:var(--mint);color:var(--bg);padding:4px 12px;border-radius:100px}
 
+/* PORTFOLIO NOTE */
+.portfolio-note{margin-top:30px;display:flex;flex-wrap:wrap;align-items:baseline;gap:10px 18px;
+  padding:20px 26px;border-radius:var(--radius);border:1px solid rgba(0,255,170,.3);
+  background:linear-gradient(145deg,rgba(0,255,170,.09),rgba(0,255,170,.02))}
+.portfolio-note strong{font-size:13px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--mint);white-space:nowrap}
+.portfolio-note p{font-size:15px;color:var(--fg2);line-height:1.5;flex:1;min-width:250px}
+
 /* CASES GRID */
 .cases-grid{margin-top:48px;display:grid;gap:12px}
 @media(min-width:900px){.cases-grid{grid-template-columns:repeat(3,1fr)}}
@@ -187,6 +200,9 @@ section.s{padding:100px 0;position:relative;z-index:2}
 .work .shot{position:relative;border-radius:14px;overflow:hidden;aspect-ratio:16/11;background:#0b0c0c;min-width:0}
 .work .shot img.d{width:100%;height:100%;object-fit:cover;object-position:top center}
 .work .shot img.m{position:absolute;right:14px;bottom:0;width:23%;aspect-ratio:.46;height:auto;object-fit:cover;object-position:top center;border:1px solid rgba(255,255,255,.22);border-bottom:none;border-radius:9px 9px 0 0;box-shadow:-12px 12px 34px rgba(0,0,0,.6)}
+.work .w-num{position:absolute;right:12px;top:12px;z-index:2;font-size:13px;font-weight:900;
+  letter-spacing:.1em;color:var(--mint);background:rgba(6,6,5,.72);backdrop-filter:blur(8px);
+  border:1px solid rgba(0,255,170,.32);border-radius:100px;padding:5px 13px}
 .work .concept{position:absolute;left:12px;top:12px;z-index:2;font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--fg2);background:rgba(6,6,5,.72);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.14);border-radius:100px;padding:5px 12px}
 .work .meta{padding:22px 10px 8px;min-width:0}
 .work .w-tag{font-size:11px;font-weight:600;color:var(--mint);letter-spacing:.15em;text-transform:uppercase}
@@ -290,6 +306,10 @@ footer a:hover{color:var(--fg)}
         <a href="#works">Примеры</a>
         <a href="#faq">FAQ</a>
       </div>
+      <a href="tel:+79182881321" class="nav-tel" aria-label="Позвонить">
+        <svg viewBox="0 0 24 24"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2Z"/></svg>
+        <span>+7 918 288-13-21</span>
+      </a>
       <a href="https://t.me/valevskiy_studio" target="_blank" class="nav-cta">Обсудить проект</a>
     </div>
   </nav>
@@ -438,6 +458,10 @@ footer a:hover{color:var(--fg)}
       <div class="reveal">
         <p class="slabel">Услуги</p>
         <h2 class="stitle">Форматы <span>работы.</span></h2>
+        <div class="portfolio-note">
+          <strong>Собираю портфолио</strong>
+          <p>Первым пяти проектам стартовая цена от 3 000 ₽. Ниже указаны обычные цены, по которым я работаю дальше.</p>
+        </div>
       </div>
       <div class="services-grid">
         <div class="glass service reveal">
@@ -533,6 +557,7 @@ footer a:hover{color:var(--fg)}
         <div class="glass work reveal">
           <div class="shot">
             <span class="concept">Концепт</span>
+            <span class="w-num">01</span>
             <img class="d" src="img/works/urist_d.webp" alt="Концепт сайта юридической компании, десктоп" loading="lazy" width="1100" height="688"/>
             <img class="m" src="img/works/urist_m.webp" alt="Тот же концепт в мобильной версии" loading="lazy"/>
           </div>
@@ -546,6 +571,7 @@ footer a:hover{color:var(--fg)}
         <div class="glass work reveal">
           <div class="shot">
             <span class="concept">Концепт</span>
+            <span class="w-num">02</span>
             <img class="d" src="img/works/doma_d.webp" alt="Концепт сайта строительной компании, десктоп" loading="lazy" width="770" height="654"/>
             <img class="m" src="img/works/doma_m.webp" alt="Тот же концепт в мобильной версии" loading="lazy"/>
           </div>
@@ -559,6 +585,7 @@ footer a:hover{color:var(--fg)}
         <div class="glass work reveal">
           <div class="shot">
             <span class="concept">Концепт</span>
+            <span class="w-num">03</span>
             <img class="d" src="img/works/remont_d.webp" alt="Концепт сайта компании по ремонту квартир, десктоп" loading="lazy" width="807" height="671"/>
             <img class="m" src="img/works/remont_m.webp" alt="Тот же концепт в мобильной версии" loading="lazy"/>
           </div>
@@ -572,6 +599,7 @@ footer a:hover{color:var(--fg)}
         <div class="glass work reveal">
           <div class="shot">
             <span class="concept">Концепт</span>
+            <span class="w-num">04</span>
             <img class="d" src="img/works/kofe_d.webp" alt="Концепт сайта кофейни, десктоп" loading="lazy" width="787" height="615"/>
             <img class="m" src="img/works/kofe_m.webp" alt="Тот же концепт в мобильной версии" loading="lazy"/>
           </div>
@@ -585,6 +613,7 @@ footer a:hover{color:var(--fg)}
         <div class="glass work reveal">
           <div class="shot">
             <span class="concept">Концепт</span>
+            <span class="w-num">05</span>
             <img class="d" src="img/works/puls_d.webp" alt="Концепт сайта фитнес-студии, десктоп" loading="lazy" width="1100" height="688"/>
             <img class="m" src="img/works/puls_m.webp" alt="Тот же концепт в мобильной версии" loading="lazy"/>
           </div>
@@ -598,6 +627,7 @@ footer a:hover{color:var(--fg)}
         <div class="glass work reveal">
           <div class="shot">
             <span class="concept">Концепт</span>
+            <span class="w-num">06</span>
             <img class="d" src="img/works/magazin_d.webp" alt="Концепт интернет-магазина товаров для кухни, десктоп" loading="lazy" width="783" height="705"/>
             <img class="m" src="img/works/magazin_m.webp" alt="Тот же концепт в мобильной версии" loading="lazy"/>
           </div>
@@ -611,6 +641,7 @@ footer a:hover{color:var(--fg)}
         <div class="glass work reveal">
           <div class="shot">
             <span class="concept">Концепт</span>
+            <span class="w-num">07</span>
             <img class="d" src="img/works/klining_d.webp" alt="Концепт сайта клининговой компании, десктоп" loading="lazy" width="766" height="716"/>
             <img class="m" src="img/works/klining_m.webp" alt="Тот же концепт в мобильной версии" loading="lazy"/>
           </div>
