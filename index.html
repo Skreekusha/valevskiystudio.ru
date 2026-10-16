@@ -254,6 +254,19 @@ section.s{padding:100px 0;position:relative;z-index:2}
 .faq-item.open .faq-a{max-height:300px}
 .faq-a p{padding:0 24px 20px;font-size:14px;color:var(--fg2);line-height:1.6}
 
+.lead-box{margin-top:16px;padding:18px;border-radius:14px;background:rgba(0,0,0,.08);
+  border:1px solid rgba(0,0,0,.18)}
+.lead-box .lb-title{font-size:13px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;
+  color:rgba(6,6,5,.6);margin-bottom:10px}
+.lead-box textarea{width:100%;font-family:inherit;font-size:13px;line-height:1.5;color:var(--bg);
+  background:rgba(255,255,255,.5);border:1px solid rgba(0,0,0,.15);border-radius:10px;padding:12px;
+  resize:none}
+.lead-box .lb-row{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.lead-box .lb-row button,.lead-box .lb-row a{font-family:inherit;font-size:13px;font-weight:700;
+  padding:10px 16px;border-radius:10px;border:1px solid rgba(0,0,0,.25);background:none;color:var(--bg);
+  cursor:pointer;text-align:center}
+.lead-box .lb-row a:first-of-type{background:var(--bg);color:#fff;border-color:var(--bg)}
+
 /* CONTACT */
 .contact-section{position:relative;z-index:2;padding-bottom:0}
 .contact-card{background:var(--mint);color:var(--bg);border-radius:var(--radius);overflow:hidden}
@@ -290,6 +303,19 @@ footer a:hover{color:var(--fg)}
 .reveal{opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease}
 .reveal.visible{opacity:1;transform:none}
 </style>
+
+  <!-- Yandex.Metrika counter -->
+  <script type="text/javascript">
+    (function(m,e,t,r,i,k,a){
+        m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+        m[i].l=1*new Date();
+        for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+        k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
+    })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=113656990', 'ym');
+    ym(113656990, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", accurateTrackBounce:true, trackLinks:true});
+  </script>
+  <noscript><div><img src="https://mc.yandex.ru/watch/113656990" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+  <!-- /Yandex.Metrika counter -->
 </head>
 <body>
   <div class="grid-bg"></div>
@@ -817,7 +843,16 @@ footer a:hover{color:var(--fg)}
               <textarea name="task" placeholder="Коротко о задаче (необязательно)"></textarea>
               <button type="submit">Получить предложение →</button>
             </form>
-            <p style="font-size:13px;color:rgba(6,6,5,.4);margin-top:10px" id="formNote">Мы свяжемся с вами в течение 24 часов.</p>
+            <p style="font-size:13px;color:rgba(6,6,5,.55);margin-top:10px" id="formNote">Отвечаю в течение дня. Можно сразу позвонить: <a href="tel:+79182881321" style="font-weight:700;border-bottom:1px solid rgba(6,6,5,.3)">+7 918 288-13-21</a></p>
+            <div class="lead-box" id="leadBox" hidden>
+              <p class="lb-title">Текст заявки скопирован</p>
+              <textarea id="leadText" readonly rows="5"></textarea>
+              <div class="lb-row">
+                <button type="button" onclick="copyLead()">Скопировать ещё раз</button>
+                <a href="https://t.me/valevskiy_studio" target="_blank" rel="noopener">Открыть Telegram</a>
+                <a href="tel:+79182881321">Позвонить</a>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -1230,15 +1265,44 @@ Promise.race([
   document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
 
   // Form submit → Telegram
+  function goal(name) {
+    try { if (window.ym) ym(113656990, 'reachGoal', name); } catch (_) {}
+  }
+  // count every contact attempt, whichever route the visitor takes
+  document.addEventListener('click', function (e) {
+    const a = e.target.closest && e.target.closest('a');
+    if (!a) return;
+    const h = a.getAttribute('href') || '';
+    if (h.indexOf('tel:') === 0) goal('call_click');
+    else if (h.indexOf('t.me/') > -1) goal('tg_click');
+  });
+
+  function copyLead() {
+    const el = document.getElementById('leadText');
+    try {
+      navigator.clipboard.writeText(el.value);
+    } catch (_) {
+      el.removeAttribute('readonly'); el.select();
+      try { document.execCommand('copy'); } catch (__) {}
+      el.setAttribute('readonly', '');
+    }
+  }
+
   function submitForm(e) {
     e.preventDefault();
     const d = new FormData(e.target);
-    const name = d.get('name') || '';
-    const contact = d.get('contact') || '';
-    const task = d.get('task') || 'Не указано';
-    const text = encodeURIComponent('Новая заявка VALEVSKIY STUDIO\n\nИмя: ' + name + '\nКонтакт: ' + contact + '\nЗадача: ' + task);
-    window.open('https://t.me/valevskiy_studio?text=' + text, '_blank');
-    document.getElementById('formNote').textContent = 'Открываю Telegram. Если не открылся — напишите @valevskiy_studio.';
+    const name = (d.get('name') || '').trim();
+    const contact = (d.get('contact') || '').trim();
+    const task = (d.get('task') || '').trim() || 'Не указано';
+    const text = 'Заявка с сайта VALEVSKIY STUDIO\n\nИмя: ' + name +
+                 '\nКонтакт: ' + contact + '\nЗадача: ' + task;
+    goal('form_submit');
+    document.getElementById('leadText').value = text;
+    document.getElementById('leadBox').hidden = false;
+    copyLead();
+    window.open('https://t.me/valevskiy_studio', '_blank');
+    document.getElementById('formNote').textContent =
+      'Текст заявки скопирован. Вставьте его в Telegram или позвоните по номеру ниже.';
   }
 </script>
 </body>
