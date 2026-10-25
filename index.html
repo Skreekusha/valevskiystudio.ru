@@ -272,8 +272,10 @@ section.s{padding:100px 0;position:relative;z-index:2}
 .consent input{width:18px;height:18px;flex:none;margin-top:2px;accent-color:var(--bg);cursor:pointer}
 .consent label{font-size:13px;line-height:1.45;color:rgba(6,6,5,.62);cursor:pointer}
 .consent a{font-weight:700;color:var(--bg);border-bottom:1px solid rgba(6,6,5,.35)}
-footer .req{margin-top:18px;font-size:12px;line-height:1.6;color:var(--fg3)}
-footer .req b{color:rgba(229,230,230,.5);font-weight:600}
+footer .legal-zone{margin-top:24px;padding-top:20px;border-top:1px solid rgba(255,255,255,.06);
+  display:flex;flex-direction:column;gap:8px}
+footer .legal-zone p{font-size:12px;line-height:1.6;color:var(--fg3)}
+footer .legal-zone b{color:rgba(229,230,230,.5);font-weight:600}
 
 /* CONTACT */
 .contact-section{position:relative;z-index:2;padding-bottom:0}
@@ -303,7 +305,6 @@ footer .req b{color:rgba(229,230,230,.5);font-weight:600}
 .contact-card .legal{color:rgba(6,6,5,.42);margin-top:18px}
 footer{padding:32px 0;font-size:13px;color:var(--fg3);position:relative;z-index:2}
 footer .inner{display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px;align-items:center}
-footer .legal{margin-top:22px;padding-top:20px;border-top:1px solid rgba(255,255,255,.06)}
 footer a{transition:color .2s}
 footer a:hover{color:var(--fg)}
 
@@ -887,8 +888,10 @@ footer a:hover{color:var(--fg)}
           <a href="/privacy.html">Политика данных</a>
         </div>
       </div>
-      <p class="req"><b>Исполнитель:</b> самозанятый Чичков Руслан Максимович, ИНН 615530063576. Санкт-Петербург. Телефон +7 918 288-13-21.</p>
-      <p class="legal">* Instagram принадлежит компании Meta, которая признана в России экстремистской организацией. Её деятельность на территории РФ запрещена.</p>
+      <div class="legal-zone">
+        <p><b>Исполнитель:</b> самозанятый Чичков Руслан Максимович, ИНН 615&nbsp;530&nbsp;063&nbsp;576, Санкт-Петербург</p>
+        <p>* Instagram принадлежит компании Meta, которая признана в России экстремистской организацией. Её деятельность на территории РФ запрещена.</p>
+      </div>
     </div>
   </footer>
 
